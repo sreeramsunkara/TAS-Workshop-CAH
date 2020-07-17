@@ -12,7 +12,7 @@
 
 - At a glance:
    - [Developers love TAS](https://www.youtube.com/watch?v=xdw_9dADM-4) because it frees and empowers them to do what they love most: to code.
-   - TAS is a Cloud Native Polyglot platform: Java, Spring, .NET, NodeJs, ...
+   - TAS is a Cloud Native Polyglot platform supporting Java, Spring, .NET, NodeJs, ...
    - TAS is an HA platform that runs on Any Cloud delivering the same developer experience on AWS, Azure, GCP and vSphere.
    - TAS helps companies deliver better software, faster and more frequently.
    - TAS Operators can patch and upgrade the platform without downtime.
@@ -44,9 +44,6 @@
      
 ![](./images/lab.png)
 
-- The following icon will show up once or twice during the hands-on labs. It's to remind you to pay special attention to the syntax of the commands you are being asked to execute. The commands will need to match the UserID you claimed for yourself in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) .
-     
-![](./images/peril.png)
 
 -----------------------------------------------------
 ## Architecture, Installation & Set-up 
