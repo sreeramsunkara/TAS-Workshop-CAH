@@ -3,7 +3,7 @@
 # VMware Tanzu Application Service Workshop 
 ### (8:30AM to 12:30PM on 07-22-2020)
 
-- We need you to carry out a few prerequisite steps in preparation for the July 22nd Tanzu Application Service Workshop
+- We need you to carry out a few [prerequisite](https://github.com/rm511130/TAS-Workshop-Prerequisites#vmware-tanzu-application-service-workshop) steps in preparation for the July 22nd Tanzu Application Service Workshop
 
 #
 ### 1. Sign-up using the Progress Worksheet
