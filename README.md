@@ -160,6 +160,10 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ![](./images/apps-manager.png)
 
+- Once you are logged-in, you should see a `Home` page similar to the one shown below.
+
+![](./images/apps-manager-1to8.png)
+
 
 
 
