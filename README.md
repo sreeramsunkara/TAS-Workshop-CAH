@@ -102,6 +102,8 @@ dotnet --version
 
 - If any of the commands shown above did not work or produced and error, please alert the workshop organizers.
 
+- Please proceed by executing the following commands:
+
 ```
 cd ~
 git clone https://github.com/rm511130/chess
