@@ -158,6 +158,8 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 - The web-based [Apps Manager](https://docs.pivotal.io/platform/application-service/2-9/console/) application helps you manage users, organizations, spaces, and applications.
 - Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.ourpcf.com](https://apps.sys.ourpcf.com) and log-in using your UserID and `password`.
 
+![](./images/appsmanager.png)
+
 
 
 
