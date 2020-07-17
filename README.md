@@ -23,7 +23,7 @@
 -----------------------------------------------------
 ## Guidelines & Conventions for this Workshop 
 
-- This self-paced workshop includes presentations, videos, demos and most of all, hands-on labs.
+- This self-paced workshop includes presentations, videos, demos and most of all, hands-on labs. 
 - The labs are interdependent and must be executed in order.
 - The lab environments will only be available during the ~5hrs (a limited window of time) dedicated for the joint start and self-paced completion of the workshop.
 - Please use the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) to claim a userID for this workshop. For example, Ralph Meira is user1.
@@ -102,21 +102,22 @@ dotnet --version
 
 - If any of the commands shown above did not work or produced and error, please alert the workshop organizers.
 
-- Please proceed by executing the following commands:
+- Please proceed by executing the following commands. They are all you need to deploy your first App to the Cloud.
 
 ```
 cd ~
 git clone https://github.com/rm511130/chess
-cd ~/chess
+cd ~/chess; rm ~/manifest.yml; ls
 cf login -a api.sys.ourpcf.com -u $user -p password
-cf push $user-chess
+cf push $user-chess -b php_buildpack
 ```
-- Once the `cf push` ends, you should see the a message  similar to the one shown below:
+
+- Once the `cf push` operation ends, you should see the a message  similar to the one shown below:
 
 ```
 name:              user1-chess
 requested state:   started
-routes:            user1-chess.apps.ourpcf.com
+routes:            user1-chess.apps.ourpcf.com              <------ Use this URL to access your App
 last uploaded:     Fri 17 Jul 15:58:21 EDT 2020
 stack:             cflinuxfs3
 buildpacks:        php_buildpack
@@ -131,17 +132,29 @@ start command:   $HOME/.bp/bin/start
 
 - Open a browser window to access your URL. In the example above, the URL is `user1-chess.apps.ourpcf.com`. Your URL will begin with your UserID.
 
+- Execute a simple `ls` command to see the file that was `git cloned` to your Workshop VM.
+
 **Let's recap:** 
-- You ssh'ed into your Workshop VM and verified the versions of certain installed CLI (Command Line Interface).
-- You used `cf login` to point to a TAS plaform and login.
-- You used `cf push` to  push your first App to TAS: a game of chess.
+- You ssh'ed into your Workshop VM and verified the versions of certain installed CLIs (Command Line Interface) such as the cf CLI.
+- You used `cf login` to point to a TAS plaform and login. You then used `cf push` to  push your first App to TAS: a game of chess.
+- Please note that:
+  - Your Chess App has a FQDN (fully qualified domain name)
+  - Your App is secured by a valid Certificate which enables HTTPS communication
+  - Your App was containerized using curated packages and deployed on the cloud in an HA environment
+  - As a developer, you did not need to worry about container filesystems and dependencies.
+  - Your App code, `index.php`, had no dependencies linked to the PaaS or IaaS you are using. You are completely cloud agnostic.
+  - Your App is running on a platform that is 100% up to date with the latest known [CVE](https://cve.mitre.org/) patches
+  - You did not have to open any tickets with Infrastructure, Operations, Networking, Security, ... to deploy your App.
+  - No wonder developers love TAS.
 
 - Congratulations, you have completed LAB-1.
 
 Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
 
 
+-----------------------------------------------------
 
+### LAB-2: SSH into your Linux Workshop VM environment & Test the Command Line Interface tools
 
 
 
