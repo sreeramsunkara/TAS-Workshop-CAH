@@ -104,12 +104,12 @@ dotnet --version
 ```
 cd ~
 git clone https://github.com/rm511130/chess
-cd ~/chess; rm ~/manifest.yml; ls
+cd ~/chess; rm README.md; ls
 cf login -a api.sys.ourpcf.com -u $user -p password
-cf push $user-chess -b php_buildpack
+cf push $user-chess
 ```
 
-- Once the `cf push` operation ends, you should see the a message  similar to the one shown below:
+- Once the `cf push` operation ends, you should see the a message similar to the one shown below:
 
 ```
 name:              user1-chess
@@ -127,7 +127,7 @@ start command:   $HOME/.bp/bin/start
 #0   running   2020-07-17T19:58:39Z   0.7%   27.2M of 512M   246.4M of 1G
 ```
 
-- Open a browser window to access your URL. In the example above, the URL is `user1-chess.apps.ourpcf.com`. Your URL will begin with your UserID.
+- Open a browser window to access your URL. In the example above, the URL is `https://user1-chess.apps.ourpcf.com`. Your URL will begin with your UserID.
 
 - Execute a simple `ls` command to see the file that was `git cloned` to your Workshop VM.
 
@@ -142,6 +142,8 @@ start command:   $HOME/.bp/bin/start
   - Your App code, `index.php`, had no dependencies linked to the PaaS or IaaS you are using. You are completely cloud agnostic.
   - Your App is running on a platform that is 100% up to date with the latest known [CVE](https://cve.mitre.org/) patches
   - You did not have to open any tickets with Infrastructure, Operations, Networking, Security, ... to deploy your App.
+  - And yet, access to your Chess App is going through routers, load balancers, firewalls and benefiting from valid certificates. 
+  - Your Chess App has also been wired-in for logging (with log consolidation) and APM (Application Performance Monitoring).
   - No wonder developers love TAS.
 
 - Congratulations, you have completed LAB-1.
@@ -151,7 +153,14 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 -----------------------------------------------------
 
-### LAB-2: SSH into your Linux Workshop VM environment & Test the Command Line Interface tools
+### LAB-2: Apps Manager
+
+- The web-based [Apps Manager](https://docs.pivotal.io/platform/application-service/2-9/console/) application helps you manage users, organizations, spaces, and applications.
+- Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.ourpcf.com](https://apps.sys.ourpcf.com) and log-in using your UserID and `password`.
+
+
+
+
 
 
 
