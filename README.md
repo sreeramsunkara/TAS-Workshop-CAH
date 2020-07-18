@@ -187,9 +187,15 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 - Once you get to this point, please let the Workshop Organizer know.
 - Everyone will be asked to pause their activities for a short demo of Apps Manager.
 
+#### Apps Manager Org-Level View
+
 ![](./images/AppsMgr-Org.png)
 
+#### Apps Manager Space-Level View
+
 ![](./images/AppsMgr-Space.png)
+
+#### Apps Manager App-Level View
 
 ![](./images/AppsMgr-App.png)
 
