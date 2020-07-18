@@ -187,11 +187,11 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 - Once you get to this point, please let the Workshop Organizer know.
 - Everyone will be asked to pause their activities for a short demo of Apps Manager.
 
-![](./images/AppMgr-Org.png)
+![](./images/AppsMgr-Org.png)
 
-![](./images/AppMgr-Space.png)
+![](./images/AppsMgr-Space.png)
 
-![](./images/AppMgr-App.png)
+![](./images/AppsMgr-App.png)
 
 
 
