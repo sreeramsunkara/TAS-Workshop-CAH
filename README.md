@@ -53,7 +53,7 @@
 
 -----------------------------------------------------
 
-### LAB-1: SSH into your Linux Workshop VM environment & Test the Command Line Interface tools
+## LAB-1: SSH into your Linux Workshop VM environment & Test the Command Line Interface tools
 
 - Let's start by logging into the Workshop environment from your machine (Mac, PC, Laptop, Desktop, Terminal, VDI). You will need to use the following private key: 
    - [fuse.pem](./fuse.pem) if using a Mac.
@@ -153,7 +153,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 -----------------------------------------------------
 
-### LAB-2: Apps Manager
+## LAB-2: Apps Manager & CF CLI
 
 ![](./images/lab.png)
 
@@ -163,6 +163,12 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 ![](./images/apps-manager.png)
 
 - Once you are logged-in, you should see a `Home` page similar to the one shown below. Don't click on anything just yet.
+
+- Please let the meeting organizers know that you are ready for the **Apps Manager Demo**
+
+- Everyone will be asked to pause their activities for a short demo of Apps Manager.
+
+#### Apps Manager Home-Page View
 
 ![](./images/apps-manager-1to8.png)
 
@@ -184,9 +190,6 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 8. `Home` and the  `Apps Manager`  on the top left of your browser, take you back to the `home page`.
 
-- Once you get to this point, please let the Workshop Organizer know.
-- Everyone will be asked to pause their activities for a short demo of Apps Manager.
-
 #### Apps Manager Org-Level View
 
 ![](./images/AppsMgr-Org.png)
@@ -199,7 +202,39 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ![](./images/AppsMgr-App.png)
 
+![](./images/lab.png)
 
+### CF CLI
+
+- Let's get back to your ssh session on your Workshop Linux VM. Let's execute a few commands using the `cf` CLI. 
+
+- When looking at Apps Manager, you probably noticed that your Chess App was allocated, by default, 1GB of RAM. You also saw that only one instance of Chess was up and running.
+
+- Let's change that by execting the following command to decrease the demands on reserved memory to 100MB and increase the App Instances to 3:
+
+```
+cf scale $user-chess -m 100M -i 3
+```
+
+- You can view the changes implemented by the command you just executed in [Apps Manager](https://apps.sys.ourpcf.com), or you can also use the `cf` CLI as follows:
+
+```
+cf events $user-chess
+```
+
+- Let's create another Space under your Org, and allow one of your colleagues to access this new Space. Execute the following commands to create a `dev` space under your Org:
+
+```
+cf create-space dev -o org$my_number
+```
+
+- Now select a colleague from the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) and give him/her access to the `dev` space you just created. In the example below, `user2` is given `SpaceDeveloper` access to the `dev` space in `org1`:
+
+```
+cf set-space-role user2 org1 dev SpaceDeveloper
+```
+
+- Ask your colleague to 
 
 
 
