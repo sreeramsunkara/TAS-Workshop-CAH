@@ -160,9 +160,31 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ![](./images/apps-manager.png)
 
-- Once you are logged-in, you should see a `Home` page similar to the one shown below.
+- Once you are logged-in, you should see a `Home` page similar to the one shown below. Don't click on anything just yet.
 
 ![](./images/apps-manager-1to8.png)
+
+- Follow the numbers on the picture above. We will let you know when to click on them.
+
+1. Your `org` is a logical segmentation of your PaaS environment that allows `Org Managers` to control settings and resources, such as `spaces`, `domains`, and `members` associated with the selected `space`, in Apps Manager. Corporations tipically use `Org` structures aligned to organize TAS around Business Units, Company Divisions, Products, or Program Areas.
+
+2. `Orgs` can have one or many `Spaces`. `Spaces` are often named after Life-Cycle-Mgmt phases such as Prod, Dev, QA, Test, SandBox. It's within `Spaces` that Apps are executed. `Memory` is a resource managed at the `Org` level. In the diagram shown above, next to the #2 yellow pointer, your `Org` is using a certain percentage of the 10GB allocated to it by the Platform Team of administrators.
+
+3. Your `Org` has only one `Space` at the present time. When `user9` first logged into TAS using `cf login` on the terminal session, he/she landed at the `workshop` space witin `org9`. That's were we will find the `chess` App.
+
+4. Yellow pointer #4 shows who is logged-in the Apps Manager session.
+
+5. `Tools` is an easy way to get the `cf` CLI to get started.
+
+6. `Docs` take you to [https://docs.pivotal.io/platform/application-service/2-9/overview/intro.html](https://docs.pivotal.io/platform/application-service/2-9/overview/intro.html)
+
+7. `Marketplace` is where you will find services such as  databases, key-value stores, message queuing solutions, and much more.
+
+8. `Home` and the  `Apps Manager`  on the top left of your browser, take you back to the `home page`.
+
+
+
+
 
 
 
