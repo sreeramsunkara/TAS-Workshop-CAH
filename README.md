@@ -166,7 +166,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 - Follow the numbers on the picture above. We will let you know when to click on them.
 
-1. Your `org` is a logical segmentation of your PaaS environment that allows `Org Managers` to control settings and resources, such as `spaces`, `domains`, and `members` associated with the selected `space`, in Apps Manager. Corporations tipically use `Org` structures aligned to organize TAS around Business Units, Company Divisions, Products, or Program Areas.
+1. Your `org` is a logical segmentation of your PaaS environment that allows `Org Managers` to control settings and resources, such as `spaces`, `domains`, and `members` associated with the selected `space`, in Apps Manager. Corporations tipically use `Org` structures to align/organize TAS around Business Units, Company Divisions, Products, or Program Areas.
 
 2. `Orgs` can have one or many `Spaces`. `Spaces` are often named after Life-Cycle-Mgmt phases such as Prod, Dev, QA, Test, SandBox. It's within `Spaces` that Apps are executed. `Memory` is a resource managed at the `Org` level. In the diagram shown above, next to the #2 yellow pointer, your `Org` is using a certain percentage of the 10GB allocated to it by the Platform Team of administrators.
 
@@ -181,6 +181,8 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 7. `Marketplace` is where you will find services such as  databases, key-value stores, message queuing solutions, and much more.
 
 8. `Home` and the  `Apps Manager`  on the top left of your browser, take you back to the `home page`.
+
+- Once you get to this point, please let the Workshop Organizer know. Everyone will be asked to pause their activities for a short demo of Apps Manager.
 
 
 
