@@ -334,10 +334,39 @@ http://user1.pks4u.com:8080
 
 ```
 cat manifest.yml
-cf push petclinic
+cf push
 ```
 
-- Once the `cf  push` has finshed executing, you should be able to access your `Petclinic` App using the URL shown in the output logs of the `cf push` command.
+- Once the `cf  push` has finished executing, you should be able to access your `Petclinic` App using the URL shown in the output logs. In the example shown below, the URL for the `Petclinic` App can be seen on the 3rd line, next to the word `routes:`. It's `https://spring-petclinic-nice-ardvark-iv.apps.ourpcf.com`, a uniquely generated URL, because the `manifest.yml` file contained the following line: `random-route: true`. 
+
+```
+name:              spring-petclinic
+requested state:   started
+routes:            spring-petclinic-nice-ardvark-iv.apps.ourpcf.com
+last uploaded:     Sun 19 Jul 23:04:53 UTC 2020
+stack:             cflinuxfs3
+buildpacks:        client-certificate-mapper=1.11.0_RELEASE container-security-provider=1.16.0_RELEASE
+                   java-buildpack=v4.29.1-offline-https://github.com/cloudfoundry/java-buildpack.git#864477c java-main java-opts
+                   java-security jvmkill-agent=1.16.0_RELEASE open-j...
+
+type:            web
+instances:       1/1
+memory usage:    2048M
+start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvmkill-1.16.0_RELEASE=printHeapHistogram=1
+                 -Djava.io.tmpdir=$TMPDIR -XX:ActiveProcessorCount=$(nproc)
+                 -Djava.ext.dirs=$PWD/.java-buildpack/container_security_provider:$PWD/.java-buildpack/open_jdk_jre/lib/ext
+                 -Djava.security.properties=$PWD/.java-buildpack/java_security/java.security $JAVA_OPTS" &&
+                 CALCULATED_MEMORY=$($PWD/.java-buildpack/open_jdk_jre/bin/java-buildpack-memory-calculator-3.13.0_RELEASE
+                 -totMemory=$MEMORY_LIMIT -loadedClasses=18868 -poolType=metaspace -stackThreads=250 -vmOptions="$JAVA_OPTS") && echo JVM
+                 Memory Configuration: $CALCULATED_MEMORY && JAVA_OPTS="$JAVA_OPTS $CALCULATED_MEMORY" && MALLOC_ARENA_MAX=2
+                 SERVER_PORT=$PORT eval exec $PWD/.java-buildpack/open_jdk_jre/bin/java $JAVA_OPTS -cp $PWD/.
+                 org.springframework.boot.loader.JarLauncher
+     state     since                  cpu    memory         disk         details
+#0   running   2020-07-19T23:05:15Z   0.0%   355.2M of 2G   156M of 1G
+```
+
+![](./images/petclinic.png)
+
 
 **Let's recap:** 
    - You used Maven to create a `jar` file which youu executed locally on your Ubuntu Workshop VM.
