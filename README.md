@@ -288,11 +288,11 @@ cf app $user-chess
 - As you may have noticed, the container that you killed was immediately substituted by a new one. TAS is constantly looking at the health of your Apps, as well as the health of the overall environment, to effectively maintain your App Instances running in the most efficient and HA manner possible. This means that TAS is multi-AZ (availability zones) aware and able to distribute your App Instances intelligently across different clusters or data-centers, in order to guarantee maximum availability.
 
 **Let's recap:** 
-- You now know how to access your Apps Manager GUI.
-- You should also be comfortable with the concept of Orgs and Spaces, and the use of the `cf` CLI.
-- You created a new `space` within your `org`, and granted access so that your colleagues could use it.
-- You experimented with `cf logs` and `cf events`
-- You saw how `TAS` quickly recovered your App after it was forced to crash.
+   - You now know how to access your Apps Manager GUI.
+   - You should also be comfortable with the concept of Orgs and Spaces, and the use of the `cf` CLI.
+   - You created a new `space` within your `org`, and granted access so that your colleagues could use it.
+   - You experimented with `cf logs` and `cf events`
+   - You saw how `TAS` quickly recovered your App after it was forced to crash.
 
 - Congratulations, you have completed LAB-2.
 
