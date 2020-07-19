@@ -50,7 +50,7 @@
 
 - Architecture Diagram of Workshop Environment:
 
-![](.images/TAS-Workshop-Env.png)
+![](./images/TAS-Workshop-Env.png)
 
 
 -----------------------------------------------------
