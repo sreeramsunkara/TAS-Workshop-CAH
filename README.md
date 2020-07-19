@@ -46,9 +46,11 @@
 
 
 -----------------------------------------------------
-## Architecture, Installation & Set-up 
+## TAS Workshop Architecture, Installation & Set-up 
 
-- A Map of the Tanzu Portfolio of products:
+- Architecture Diagram of Workshop Environment:
+
+![](.images/TAS-Workshop-Env.png)
 
 
 -----------------------------------------------------
