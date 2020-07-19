@@ -208,11 +208,9 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ### CF CLI
 
-- Let's get back to your ssh session on your Workshop Linux VM. Let's execute a few commands using the `cf` CLI. 
+- Let's get back to your `ssh` session on your Workshop Linux VM. Let's execute a few commands using the `cf` CLI. 
 
-- When looking at Apps Manager, you probably noticed that your Chess App was allocated, by default, 1GB of RAM. You also saw that only one instance of Chess was up and running.
-
-- Let's change that by execting the following command to decrease the demands on reserved memory to 100MB and increase the App Instances to 3:
+- When looking at Apps Manager, you probably noticed that your Chess App was allocated, by default, 1GB of RAM. You also saw that only one instance of Chess was up and running. Let's change that by executing the following command to decrease the memory down to 100MB and increase the App Instances to 3:
 
 ```
 cf scale $user-chess -m 100M -i 3
@@ -224,20 +222,88 @@ cf scale $user-chess -m 100M -i 3
 cf events $user-chess
 ```
 
-- Let's create another Space under your Org, and allow one of your colleagues to access this new Space. Execute the following commands to create a `dev` space under your Org:
+- Let's create another `Space` under your `Org`, and allow one of your colleagues to access this new `Space`. Execute the following command to create a `dev` space under your Org:
 
 ```
 cf create-space dev -o org$my_number
 ```
 
-- Now select a colleague from the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) and give him/her access to the `dev` space you just created. In the example below, `user2` is given `SpaceDeveloper` access to the `dev` space in `org1`:
+- With the next command, you will be giving every `user` in this workshop access to the `dev` space you just created. 
 
 ```
-cf set-space-role user2 org1 dev SpaceDeveloper
+for i in {1..22}; do cf set-space-role user$i org$my_number dev SpaceDeveloper; done
 ```
 
-- Ask your colleague to 
+- You can now ask any of your colleagues to access the `dev space` in your `org`. The same will apply to you, so use the following command to see what `orgs` are available for you to target, and then target a new `org` that is not yours to access its `dev space`. The `cf target` command below will try to target the `org` and `dev space` of your preceding colleague: e.g. if you are `user5`, he `cf target` command below will attempt to target `org4` and its `dev space`. The `cf target` command may fail if your colleague hasn't yet given you access to his/her `org` and `dev space`, so you can always comme back later to see the next two commands working, or you can adjust the `-o orgID` to one that is available to you.
 
+```
+cf orgs
+cf target -o org$((my_number-1)) -s dev           
+```
+
+- Let's execute a few more `cf` CLI commands. Looking at the next few commands, it should be easy to undestand what they do. The point of this exercise is just to give you an idea of what you can do with the `cf` CLI. If you have any questions, please ask them to the meeting organizers.
+
+```
+cd ~/chess
+cf target -o org$my_number -s workshop
+cf spaces
+cf org-users org$my_number
+cf apps
+cf app $user-chess
+cf marketplace
+cf create-app-manifest $user-chess
+cat $user-chess_manifest.yml
+cf logs $user-chess --recent
+cf quotas
+```
+
+- Let's now log into one of the containers that is running your `chess` App using the following command:
+
+```
+cf ssh $user-chess
+```
+
+- You should see a Linux prompt that looks something like this: `vcap@fd9dcac5-3ca3-4c5c-50dc-0024:~$`. Please proceed by executing the following commands:
+
+```
+ps -ef
+whoami
+cat /etc/*release | head -n 4
+df -h
+```
+
+- The next command you will execute is distructive in nature. We will be `killing` a critical process in the container you are logged in to see what `TAS` is going to do. Please execute the following command:
+
+```
+kill -9 $(ps -ef | grep diego-sshd | head -n 1 | awk '{ print $2 }')
+```
+
+- Now take a look at how your `chess` App is doing using the following command:
+
+```
+cf events $user-chess
+cf app $user-chess
+```
+
+- As you may have noticed, the container that you killed was immediately substituted by a new one. TAS is constantly looking at the health of your Apps, as well as the health of the overall environment, to effectively maintain your App Instances running in the most efficient and HA manner possible. This means that TAS is multi-AZ (availability zones) aware and able to distribute your App Instances intelligently across different clusters or data-centers, in order to guarantee maximum availability.
+
+**Let's recap:** 
+- You now know how to access your Apps Manager GUI.
+- You should also be comfortable with the concept of Orgs and Spaces, and the use of the `cf` CLI.
+- You created a new `space` within your `org`, and granted access so that your colleagues could use it.
+- You experimented with `cf logs` and `cf events`
+- You saw how `TAS` quickly recovered your App after it was forced to crash.
+
+- Congratulations, you have completed LAB-2.
+
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+ 
+
+-----------------------------------------------------
+
+## LAB-3: Apps Manager & CF CLI
+
+![](./images/lab.png)
 
 
 
