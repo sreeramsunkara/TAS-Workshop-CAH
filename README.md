@@ -372,16 +372,12 @@ start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvm
 ```
 export my_route=$(cf app spring-petclinic | grep route | awk '{ print $2 }')
 export my_task="cf run-task spring-petclinic \"while (true); do curl -k http://"$my_route"; done\" --name $user-task"
-echo $my_task
 echo $my_task | set --
 "$@"
-```
-
-- The `Linux Shell` commnands shown above assemble a simple one-line command to execute a `task` that will perform `curl` commands against the URL of your `Petclinic` App:
-
-```
 echo $my_task
 ```
+
+- The `Linux Shell` commnands shown above assemble a simple one-line command to execute a `cf run-task`. The `task` performs `curl` commands against the URL of your `Petclinic` App. The actual one-line command is contained in the `$my_task` variable which was `echo'ed` out for you to see.
 
 -  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](https://apps.sys.ourpcf.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
 
@@ -389,13 +385,17 @@ echo $my_task
 
 **Let's recap:** 
    - You used Maven to create a `jar` file which youu executed locally on your Ubuntu Workshop VM.
-   - You then used `cf push` to push your `Petclinic` App to  `TAS`, and you used a browser to validate that it was working as expected.
+   - You then used `cf push` to push your `Petclinic` App to `TAS`, and you used a browser to validate that it was working as expected.
    - You now have two Apps running on `TAS`.
 
 - Congratulations, you have completed LAB-3.
 
 Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
 
+
+-----------------------------------------------------
+
+## LAB-4: Movie Fun
 
 
 
