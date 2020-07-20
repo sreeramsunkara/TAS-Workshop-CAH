@@ -395,7 +395,15 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 -----------------------------------------------------
 
-## LAB-4: Movie Fun
+## LAB-4: Blue-Green, Zero-Downtime-Deploymemt
+
+- Your `Chess` App can have different colors: e.g. blue & green. 
+- Please keep your browser open on your `Chess` App at `http://userID-chess.apps.ourpcf.com`. Refresh your browser from time to time to see the seamless transition between Blue-Chess to Green-Chess:
+
+```
+
+```
+
 
 
 
