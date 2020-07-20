@@ -559,13 +559,48 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
  ![](./images/lab.png)   
 
-- TAS makes it really easy to create and use services such as database services. Let's create a small MySQL database just for you. Please execute the following command on your Workshop VM:
+- TAS makes it really easy to create and use services such as databases, message queues, key-value stores, cache engines, ... 
+
+- Let's create a small MySQL database just for you. Please execute the following command on your Workshop VM:
 
 ```
 cf marketplace | grep -i mysql
 cf create-service p.mysql db-small $user-my-sql
 cf service $user-my-sql
 ```
+
+- As you may have noticed, we picked a platform-managed MySQL implementation `p.mysql` in order to keep this Lab 100% compatible with any IaaS provider. Had we picked an AWS specific MySQL, we would remain locked to AWS for that service. Let's get a new application called `MovieFun` up and running. Please execute the following commands on your Workshop VM: 
+
+```
+cf buildpacks
+cd ~
+git clone https://github.com/rm511130/moviefun
+cd moviefun
+mvn clean package -DskipTests -Dmaven.test.skip=true
+cf push $user-moviefun
+```
+
+- The `MovieFun` App requires the use of the [TomEE Buildpack](https://github.com/cloudfoundry-community/tomee-buildpack) because it is an older JVM based application. The TomEE Buildpack is designed to run many JVM-based applications (Grails, Groovy, Java Main, Play Framework, Spring Boot, and Java EE Web Profile) with no additional configuration. It supports configuration of the standard components, and extension to add custom components. This specific buildpack has been customised to use TomEE. 
+
+- You may have noticed that the `cf buildpacks` command did not show the `TomEE Buildpack` as being installed in TAS, but we were able to use its URL in the manifest file. This technique opens your world to many more framework and languages available at: https://github.com/cloudfoundry-community/cf-docs-contrib/wiki/Buildpacks
+
+- Let's take the URL of the `MovieFun` App you just deployed and take a look at how it works. Please access the `MovieFun` using a browser.
+
+![](./images/moviefun.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 - The `cf create-service p.mysql` process will take 3 to 4 minutes. So, while your MySQL DB instance is being provisioned, let's take a look at your existing `Petclinic` App using Apps Manager. Please navigate to the overview page of your `Petclinic` App and validate, per the example below, that your App is using the H2 in-memory DB at this point in time.
 
 ![](./images/PetClinic-H2.png)
