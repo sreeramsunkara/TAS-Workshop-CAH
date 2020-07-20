@@ -216,6 +216,8 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 cf scale $user-chess -m 100M -i 3
 ```
 
+- Note: the command above will require the restart of your `Chess` App because we are literally reconfiguring the containers that are running your App. Later on, during Lab-4, we will see a technique for making such a change without any Application downtime.
+
 - You can view the changes implemented by the command you just executed in [Apps Manager](https://apps.sys.ourpcf.com), or you can also use the `cf` CLI as follows:
 
 ```
@@ -386,7 +388,9 @@ echo $my_task
 **Let's recap:** 
    - You used Maven to create a `jar` file which youu executed locally on your Ubuntu Workshop VM.
    - You then used `cf push` to push your `Petclinic` App to `TAS`, and you used a browser to validate that it was working as expected.
-   - You now have two Apps running on `TAS`.
+   - You now have two Apps running on TAS: `Chess` & `Petclinic`. 
+   - Your `Petclinic` App is being warmed-up by a never-ending `while (true)` loop which was executed as a `cf run-task`. We will come back to this area in a subsequent lab, when we will address App auto-scaling.
+   - You used Apps Manager to see how your `Petclinic` App is performing. App Manager showed you metrics, App tracing details, and health-check details.
 
 - Congratulations, you have completed LAB-3.
 
@@ -397,12 +401,88 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ## LAB-4: Blue-Green, Zero-Downtime-Deploymemt
 
-- Your `Chess` App can have different colors: e.g. blue & green. 
-- Please keep your browser open on your `Chess` App at `http://userID-chess.apps.ourpcf.com`. Refresh your browser from time to time to see the seamless transition between Blue-Chess to Green-Chess:
+- Your `Chess` App can have different colors: e.g. blue & green.
+ 
+- Please keep your browser open on your `Chess` App at `http://userID-chess.apps.ourpcf.com`. You will be asked to hit the refresh button multiple times to see the seamless transition between Blue-Chess to Green-Chess.
+
+- Let's get started by making some changes to your `Chess` App. Please execute the following commands to change your `Chess` from blue to green:
 
 ```
+cd ~/chess
+sed -i 's/c0c/1ffe/g' index.php
+sed -i 's/blue/green/g' index.php
+```
+
+- As soon as you have executed the command shown below, start to hit the refresh button on the browser to see your `Chess` App change from blue to green. The `watch` command shown below will also show you what is happening to your App:
 
 ```
+cf v3-zdt-push $user-chess -b php_buildpack
+watch cf app $user-chess
+```
+
+- Once the change has happened, you can use `CTRL-C` to exit the `watch` loop.
+
+- Let's take a look at `Revisions` in your Apps Manager. Please navigate to the `Revisions` tab of your `Chess` App in the Apps Manager GUI.
+
+- You can also define environment variables on-the-fly without needing to restage or restart your App. Please execute the following commands:
+
+```
+cf env $user-chess
+cf v3-set-env $user-chess color green
+cf env $user-chess
+```
+
+- You can see, from how the commands above behave, that if your App looks at environment variables to determine its behavior, the `cf v3-set-env` command is indeed a very powerful tool. 
+
+- During Lab-2 we re-sized the `Chess` containers down from 1GB to 100MB RAM. This operation led to App Downtime because the App was restaged. Back then, we mentioned that there was a way of circumventing the need for downtime. Please execute the following commands to see how to resize your containers without any downtime. As soon as you start to execute the commands shown below, you can start to hit the refresh button on the browser to validate that your `Chess` App will not go down during the vertical resizing of the containers.
+
+```
+cd ~/chess
+cf push $user-chess-v2 -m 99M -i 3 -b php_buildpack
+cf map-route $user-chess-v2 apps.ourpcf.com --hostname $user-chess
+cf stop $user-chess
+```
+
+- You still have access to your first version of the `Chess` App with it's 100MB of RAM, but the App now serving the request on the same URL is the v2 which is now sized to consume 99MB of RAM.
+
+```
+cf apps
+cf unmap-route $user-chess-v2 apps.ourpcf.com --hostname $user-chess-v2
+cf apps
+```
+- We can complete the switch by deleting the old version of the `Chess` App. Please execute the following commands:
+
+```
+cf delete $user-chess
+cf apps
+```
+
+**Let's recap:** 
+- You performed zero-downtime deployment of a green-Chess App without any downtime.
+- You introduced an environment variable to your environment without any downtime.
+- You used `cf map-route` to introduce a new version of your App without any downtime.
+- Note that the `cf map-route` command enables the dark launching of new features and their eventual introduction into the mainstream application. You can have many routes mapped to the same App.
+
+- Congratulations, you have completed LAB-4.
+
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
