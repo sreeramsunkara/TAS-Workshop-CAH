@@ -636,9 +636,15 @@ cf restart $user-moviefun
 
 4. Once the `MovieFun` is up and running, open a browser to access the App and click on **index** to go straight to the `MovieFun` App screen and check whether your data survived the restart thanks to the MySQL DB.
 
-- Please use Apps Manager to navigate to the home page of your `MovieFun` App.
+- Please use Apps Manager to navigate to the home page of your `MovieFun` App. Then look for and click-on `Service`. You'll find `Service (1)` under `Overview` in the menu to the left of the Apps Manager GUI.
 
 ![](./images/mysql-creds.png)
+
+- As shown in the picture above, please click on the 3 vertical dotts and then on the **View Credentials** link to view the environment variables that were bound to your App. These credentials are unique and when the App Deployment happens in a production environment, we typically place them in CredHub to futher protect them from prying eyes. Please execute the following commands to see your App's ennvironment variables:
+
+```
+cf env $user-moviefun
+```
 
 
 
