@@ -569,26 +569,37 @@ cf create-service p.mysql db-small $user-mysql
 cf service $user-mysql
 ```
 
-- As you may have noticed, we picked a platform-managed MySQL implementation `p.mysql` in order to keep this Lab 100% compatible with any IaaS provider. Had we picked an AWS specific MySQL, we would be locking our implementation to AWS for that service. Let's get a new application called `MovieFun` up and running. Please execute the following commands on your Workshop VM: 
+- As you may have noticed, we picked a platform-managed MySQL implementation `p.mysql` in order to keep this Lab 100% compatible with any IaaS provider. Had we picked an AWS specific MySQL, we would be locking our implementation to AWS for that service. Let's get a new application called `MovieFun` up and running. Please execute the following command on your Workshop VM to list the buildpacks installed on TAS and available for you to use: 
 
 ```
 cf buildpacks
+```
+
+- Let's download the `MovieFun` App and create a WAR file using Maven. Please execute the following commands:
+
+```
 cd ~
 git clone https://github.com/rm511130/moviefun
 cd moviefun
 mvn clean package -DskipTests -Dmaven.test.skip=true
+```
+- Now let's run our `MovieFun` App on TAS. Please execute the following command:
+
+```
 cf push $user-moviefun
 ```
 
 - The `MovieFun` App requires the use of the [TomEE Buildpack](https://github.com/cloudfoundry-community/tomee-buildpack) because it is an older JVM based application. The TomEE Buildpack is designed to run many JVM-based applications (Grails, Groovy, Java Main, Play Framework, Spring Boot, and Java EE Web Profile) with no additional configuration. It supports configuration of the standard components, and extension to add custom components. This specific buildpack has been customised to use the Tomcat Web Server.  
 
-- You may have noticed that the `cf buildpacks` command did not show the `TomEE Buildpack` as being installed in TAS, but we were able to use its URL in the manifest file. This technique opens your world to many more framework and languages available at: https://github.com/cloudfoundry-community/cf-docs-contrib/wiki/Buildpacks
+- You may have noticed that the `cf buildpacks` command did not show the `TomEE Buildpack` as being installed in TAS, but we were able to use its URL in the `manifest.yml` file. This technique opens your world to many more framework and languages available at: https://github.com/cloudfoundry-community/cf-docs-contrib/wiki/Buildpacks
 
-- Let's take the URL of the `MovieFun` App you just deployed and take a look at how the `MovieFun` App works. Please access the `MovieFun` using a browser and then click on **set-up** and then on **Go to main app** per the example shown below:
+- Let's take the URL of the `MovieFun` App you just deployed and take a look at how the `MovieFun` App works. 
+
+- Please access the `MovieFun` using a browser and then click on **set-up** and then on **Go to main app** per the example shown below:
 
 ![](./images/MovieFun.png)
 
-- Feel free to add or delete records, then execute the following command:
+- Feel free to add or delete records, then execute the following command on your Workshop VM:
 
 ```
 cf restart $user-moviefun
@@ -611,9 +622,9 @@ cf bind-service $user-moviefun $user-mysql
 cf restage $user-moviefun
 ```
 
-- The `cf restage` is necessary because TAS will need to add dependencies/libraries and make configuration adjustments so that your `Petclinic` App may be able to use the MySQL DB instance that you created.
+- The `cf restage` is necessary because TAS will need to configuration adjustments so that your `MovieFun` App may be able to use the MySQL DB instance that you created.
 
-- Now let's repeat the same steps as before:
+- Once the `cf restage` has finished, let's repeat the same process again:
 
 1. Access your `MovieFun` app using a browser.
 2. Click on **set-up** and then on **Go to main app** 
@@ -624,6 +635,10 @@ cf restart $user-moviefun
 ```
 
 4. Once the `MovieFun` is up and running, open a browser to access the App and click on **index** to go straight to the `MovieFun` App screen and check whether your data survived the restart thanks to the MySQL DB.
+
+- Please use Apps Manager to navigate to the home page of your `MovieFun` App.
+
+![](./images/mysql-creds.png)
 
 
 
