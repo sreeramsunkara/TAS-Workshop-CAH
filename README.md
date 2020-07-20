@@ -527,7 +527,7 @@ chmod +x cf_push_example_binary_buildpack.sh
 
 10. Now observe the system at work.
 
-- Can this type of scaling be done via scripts and configuration files? Yes, absolutely. The first step is to extende the `cf` CLI features by using plug-ins. Let's add the _Cloud Foundry CLI AutoScaler Plug-in_ to your Workshop VM. Please execute the following commands:
+- Can this type of scaling be done via scripts and configuration files? Yes, absolutely. The first step is to extend the `cf` CLI features by using plug-ins. Let's add the _Cloud Foundry CLI AutoScaler Plug-in_ to your Workshop VM. Please execute the following commands:
 
 ```
 cf install-plugin -r CF-Community app-autoscaler-plugin
