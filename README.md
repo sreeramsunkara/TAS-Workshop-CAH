@@ -499,7 +499,7 @@ chmod +x cf_push_example_binary_buildpack.sh
 
 - Once the commands above have completed, go to your Apps Manager to see how `Petclinic` is performing.
 
-- For the purposes of this Lab, we wish to keep the average %CPU between 5% and 10%. 
+- For the purposes of this Lab, we wish to keep the average %CPU between 15% and 25%. 
 
 1. Using your Apps Manager, navigate to your `Petclinic` overview page and please click on **Enable Autoscaling**
 
@@ -511,26 +511,38 @@ chmod +x cf_push_example_binary_buildpack.sh
 
 5. The Rule Type should be **CPU Utilization**
 
-6. In the box for _scale down if less than_ type in **5** 
+6. In the box for _scale down if less than_ type in **15** 
 
-7. In the box for _scale up if more than_ type in **10** and click on **Save**
+7. In the box for _scale up if more than_ type in **25** and click on **Save**
 
 8. On the _INSTANCE LIMITS_ section, set _Minimum_ to **1** and set _Maximum_ to **10** and then hit apply changes.
 
-9. 
+9. You can now **close** the _AutoScaling Tab_ by clicking on the *x* at the top left hand corner of the tab.
 
+10. Now observe the system at work.
 
-
-
-
-- The `cf` CLI is architected to allow for feature expansion through plug-ins. Let's add the [Cloud Foundry CLI AutoScaler Plug-in](https://github.com/cloudfoundry/app-autoscaler-cli-plugin) to your Workshop VM. Please execute the following commands:
+- Can this type of scaling be done via scripts and configuration files? Yes, absolutely. The first step is to extende the `cf` CLI features by using plug-ins. Let's add the _Cloud Foundry CLI AutoScaler Plug-in_ to your Workshop VM. Please execute the following commands:
 
 ```
 cf install-plugin -r CF-Community app-autoscaler-plugin
 cf plugins
 ```
 
-- 
+- From here on, you can read about the `cf autoscaler` commands [here](https://github.com/cloudfoundry/app-autoscaler-cli-plugin). For the purposes of this Lab, we will stop here and perform some clean-up. Please execute the following command:
+
+```
+cf delete curly
+cf tasks spring-petclinic
+cf terminate-task spring-petclinic $(cf tasks spring-petclinic | head -n 5 | tail -n 1 | awk '{print $1}')
+```
+
+**Let's recap:** 
+- Autoscaling seamlessly scales our App horizontally by increasing or decreasing the number of App Instances to meet your desired throughput, latency, %CPU, ... goals.
+
+- Congratulations, you have completed LAB-5.
+
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+
 
 
 
