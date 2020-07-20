@@ -401,6 +401,8 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ## LAB-4: Blue-Green, Zero-Downtime-Deploymemt
 
+ ![](./images/lab.png)   
+
 - Your `Chess` App can have different colors: e.g. blue & green.
  
 - Please keep your browser open on your `Chess` App at `http://userID-chess.apps.ourpcf.com`. You will be asked to hit the refresh button multiple times to see the seamless transition between Blue-Chess to Green-Chess.
@@ -457,18 +459,78 @@ cf delete $user-chess
 cf apps
 ```
 
+- The `cf map-route` command enables the dark launching of new features and their eventual introduction into the mainstream application. You can also have many routes mapped to the same App. For example, please execute the following commands:
+
+```
+cf map-route spring-petclinic apps.ourpcf.com --hostname $user-pets
+cf apps
+```
+
+- Your `Petclinic` App now has an easier URL to remember, and it did not lose the previous URL.
+
 **Let's recap:** 
 - You performed zero-downtime deployment of a green-Chess App without any downtime.
 - You introduced an environment variable to your environment without any downtime.
-- You used `cf map-route` to introduce a new version of your App without any downtime.
-- Note that the `cf map-route` command enables the dark launching of new features and their eventual introduction into the mainstream application. You can have many routes mapped to the same App.
+- You used `cf map-route` to introduce a new version of your App without any downtime and to simplify your `Petclinic` App URL.
 
 - Congratulations, you have completed LAB-4.
 
 Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
 
 
+-----------------------------------------------------
 
+## LAB-5: Application Autoscaling
+
+ ![](./images/lab.png)   
+
+- Let use a tiny program written in "C" to create some additional load on your "Petclinic" App. Please execute the following commands:
+
+```
+cd ~
+git clone https://github.com/rm511130/curly
+cd curly
+export replace_me="chess.cfapps.io"
+export replace_by=$user-pets.apps.ourpcf.com
+sed -i "s|$replace_me|$replace_by|g" cf_push_example_binary_buildpack.sh 
+chmod +x cf_push_example_binary_buildpack.sh 
+./cf_push_example_binary_buildpack.sh 
+```
+
+- Once the commands above have completed, go to your Apps Manager to see how `Petclinic` is performing.
+
+- For the purposes of this Lab, we wish to keep the average %CPU between 5% and 10%. 
+
+1. Using your Apps Manager, navigate to your `Petclinic` overview page and please click on **Enable Autoscaling**
+
+2. Click on **Manage Auutoscaling**
+
+3. An autoscaling tab will pop from the right side of your browser. Click on _Scaling Rules_ **Edit**  
+
+4. Click on **Add Rule**
+
+5. The Rule Type should be **CPU Utilization**
+
+6. In the box for _scale down if less than_ type in **5** 
+
+7. In the box for _scale up if more than_ type in **10** and click on **Save**
+
+8. On the _INSTANCE LIMITS_ section, set _Minimum_ to **1** and set _Maximum_ to **10** and then hit apply changes.
+
+9. 
+
+
+
+
+
+- The `cf` CLI is architected to allow for feature expansion through plug-ins. Let's add the [Cloud Foundry CLI AutoScaler Plug-in](https://github.com/cloudfoundry/app-autoscaler-cli-plugin) to your Workshop VM. Please execute the following commands:
+
+```
+cf install-plugin -r CF-Community app-autoscaler-plugin
+cf plugins
+```
+
+- 
 
 
 
