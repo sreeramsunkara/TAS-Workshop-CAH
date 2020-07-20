@@ -569,7 +569,7 @@ cf create-service p.mysql db-small $user-mysql
 cf service $user-mysql
 ```
 
-- As you may have noticed, we picked a platform-managed MySQL implementation `p.mysql` in order to keep this Lab 100% compatible with any IaaS provider. Had we picked an AWS specific MySQL, we would remain locked to AWS for that service. Let's get a new application called `MovieFun` up and running. Please execute the following commands on your Workshop VM: 
+- As you may have noticed, we picked a platform-managed MySQL implementation `p.mysql` in order to keep this Lab 100% compatible with any IaaS provider. Had we picked an AWS specific MySQL, we would be locking our implementation to AWS for that service. Let's get a new application called `MovieFun` up and running. Please execute the following commands on your Workshop VM: 
 
 ```
 cf buildpacks
