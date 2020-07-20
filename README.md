@@ -586,7 +586,7 @@ cf push $user-moviefun
 
 - Let's take the URL of the `MovieFun` App you just deployed and take a look at how it works. Please access the `MovieFun` using a browser.
 
-![](./images/moviefun.png)
+![](./images/MovieFun.png)
 
 
 
