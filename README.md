@@ -210,7 +210,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 - Let's get back to your `ssh` session on your Workshop Linux VM. Let's execute a few commands using the `cf` CLI. 
 
-- When looking at Apps Manager, you probably noticed that your Chess App was allocated, by default, 1GB of RAM. You also saw that only one instance of Chess was up and running. Let's change that by executing the following command to decrease the memory down to 100MB and increase the App Instances to 3. When asked `Are you sure you want to scale?`, please answer `y`.
+- When looking at Apps Manager, you probably noticed that your Chess App was allocated, by default, 1GB of RAM. You also saw that only one instance of Chess was up and running. Let's change that by executing the following command to decrease the memory down to 100MB and increase the number of App Instances to 3. When asked `Are you sure you want to scale?`, please answer `y`.
 
 ```
 cf scale $user-chess -m 100M -i 3
