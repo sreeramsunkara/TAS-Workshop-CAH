@@ -485,7 +485,6 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 
 -----------------------------------------------------
-
 ## LAB-5: Application Autoscaling
 
  ![](./images/lab.png)   
@@ -531,13 +530,18 @@ chmod +x cf_push_example_binary_buildpack.sh
 
 ```
 cf install-plugin -r CF-Community app-autoscaler-plugin
+```
+
+- Now let's check what are the `cf` CLI plugins available to you by executing the following command:
+
+```
 cf plugins
 ```
 
 - From here on, you can read about the `cf autoscaler` commands [here](https://github.com/cloudfoundry/app-autoscaler-cli-plugin). For the purposes of this Lab, we will stop here and perform some clean-up. Please execute the following command:
 
 ```
-cf delete curly
+cf delete -f curly
 cf tasks spring-petclinic
 cf terminate-task spring-petclinic $(cf tasks spring-petclinic | head -n 5 | tail -n 1 | awk '{print $1}')
 ```
@@ -550,10 +554,86 @@ cf terminate-task spring-petclinic $(cf tasks spring-petclinic | head -n 5 | tai
 Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
 
 
+-----------------------------------------------------
+## LAB-6: Services and Service Instances 
+
+ ![](./images/lab.png)   
+
+- TAS makes it really easy to create and use services such as database services. Let's create a small MySQL database just for you. Please execute the following command on your Workshop VM:
+
+```
+cf marketplace | grep -i mysql
+cf create-service p.mysql db-small $user-my-sql
+cf service $user-my-sql
+```
+- The `cf create-service p.mysql` process will take 3 to 4 minutes. So, while your MySQL DB instance is being provisioned, let's take a look at your existing `Petclinic` App using Apps Manager. Please navigate to the overview page of your `Petclinic` App and validate, per the example below, that your App is using the H2 in-memory DB at this point in time.
+
+![](./images/PetClinic-H2.png)
+
+- Now conduct a quick experiment:
+
+1. Please access your `Petclinic` App at the URL `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID.
+
+2. Click on **Find Owners** and **add** a new owner and a new pet. The data you entered is stored in the H2 in-memory DB.
+
+3. Click on **Find Owners** and look for the new owner you added, just to make sure the functionality is working as expected.
+
+4. Back on your Workshop VM Terminal, execute the following command:
+
+```
+cf restart spring-petclinic
+```
+
+5. Now go back to your `Petclinic` App at `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID. Look for your recently added pet owner using the **Find Owners** functionality. You should see a message indicating that your owner `has not been found`.
+
+- Back on your Workshop VM Terminal, let's check whether your MySQL DB instance is up and running, i.e. `status: create succeeded`. Please execute the following command: 
+
+```
+cf service $user-my-sql
+```
+
+- If you see `status: create succeeded`, then please proceed, otherwise please wait a minute or so until you see `status: create succeeded` in the output of the `cf service $user-my-sql` command.
+
+- Let's bind your MySQL instance to your `Petclinic` App. Please execute the following commmands:
+
+```
+cf bind-service spring-petclinic $user-my-sql
+cf restage spring-petclinic
+```
+
+- The `cf restage` is necessary because TAS will need to add dependencies/libraries and make configuration adjustments so that your `Petclinic` App may be able to use the MySQL DB instance that you created.
+
+- Now let's repeat the same steps as before:
+
+1. Access your `Petclinic` App at the URL `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID.
+
+2. Click on **Find Owners** and **add** a new owner and a new pet. The data you entered is stored in the MySQL DB.
+
+3. Click on **Find Owners** and look for the new owner you added, just to make sure the functionality is working as expected.
+
+4. Back on your Workshop VM Terminal, execute the following command:
+
+```
+cf restart spring-petclinic
+```
+
+5. Now go back to your `Petclinic` App at `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID. Look for your recently added pet owner using the **Find Owners** functionality. You should see that the data survived the restart and continues to be available to you. 
 
 
 
 
+
+
+
+
+
+
+**Let's recap:** 
+- Autoscaling seamlessly scales our App horizontally by increasing or decreasing the number of App Instances to meet your desired throughput, latency, %CPU, ... goals.
+
+- Congratulations, you have completed LAB-6.
+
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 
