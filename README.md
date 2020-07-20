@@ -377,7 +377,13 @@ echo $my_task | set --
 "$@"
 ```
 
--  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate from your `Org` to your `Workshop Space` to your `App` using the [Apps Manager](https://apps.sys.ourpcf.com/):
+- The `Linux Shell` commnands shown above assemble a simple one-line command to execute a `task` that will perform `curl` commands against the URL of your `Petclinic` App:
+
+```
+echo $my_task
+```
+
+-  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](Apps Manager](https://apps.sys.ourpcf.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
 
 ![](./images/SpringAppTAS.png)
 
