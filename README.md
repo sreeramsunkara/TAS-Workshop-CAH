@@ -381,8 +381,7 @@ start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvm
 ```
 export my_route=$(cf app spring-petclinic | grep route | awk '{ print $2 }')
 export my_task="cf run-task spring-petclinic \"while (true); do curl -k http://"$my_route"; done\" --name $user-task"
-echo $my_task | set --
-"$@"
+echo $my_task | sh
 echo $my_task
 ```
 
