@@ -383,7 +383,7 @@ echo $my_task | set --
 echo $my_task
 ```
 
--  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](Apps Manager](https://apps.sys.ourpcf.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
+-  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](https://apps.sys.ourpcf.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
 
 ![](./images/SpringAppTAS.png)
 
