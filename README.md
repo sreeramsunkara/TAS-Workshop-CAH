@@ -565,8 +565,8 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ```
 cf marketplace | grep -i mysql
-cf create-service p.mysql db-small $user-my-sql
-cf service $user-my-sql
+cf create-service p.mysql db-small $user-mysql
+cf service $user-mysql
 ```
 
 - As you may have noticed, we picked a platform-managed MySQL implementation `p.mysql` in order to keep this Lab 100% compatible with any IaaS provider. Had we picked an AWS specific MySQL, we would remain locked to AWS for that service. Let's get a new application called `MovieFun` up and running. Please execute the following commands on your Workshop VM: 
@@ -584,75 +584,46 @@ cf push $user-moviefun
 
 - You may have noticed that the `cf buildpacks` command did not show the `TomEE Buildpack` as being installed in TAS, but we were able to use its URL in the manifest file. This technique opens your world to many more framework and languages available at: https://github.com/cloudfoundry-community/cf-docs-contrib/wiki/Buildpacks
 
-- Let's take the URL of the `MovieFun` App you just deployed and take a look at how it works. Please access the `MovieFun` using a browser.
+- Let's take the URL of the `MovieFun` App you just deployed and take a look at how the `MovieFun` App works. Please access the `MovieFun` using a browser and then click on **set-up** and then on **Go to main app** per the example shown below:
 
 ![](./images/MovieFun.png)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-- The `cf create-service p.mysql` process will take 3 to 4 minutes. So, while your MySQL DB instance is being provisioned, let's take a look at your existing `Petclinic` App using Apps Manager. Please navigate to the overview page of your `Petclinic` App and validate, per the example below, that your App is using the H2 in-memory DB at this point in time.
-
-![](./images/PetClinic-H2.png)
-
-- Now conduct a quick experiment:
-
-1. Please access your `Petclinic` App at the URL `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID.
-
-2. Click on **Find Owners** and **add** a new owner and a new pet. The data you entered is stored in the H2 in-memory DB.
-
-3. Click on **Find Owners** and look for the new owner you added, just to make sure the functionality is working as expected.
-
-4. Back on your Workshop VM Terminal, execute the following command:
+- Feel free to add or delete records, then execute the following command:
 
 ```
-cf restart spring-petclinic
+cf restart $user-moviefun
 ```
 
-5. Now go back to your `Petclinic` App at `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID. Look for your recently added pet owner using the **Find Owners** functionality. You should see a message indicating that your owner `has not been found`.
+- Once the `MovieFun` App is back up and running, use the same URL to access the App and then click on **index** (on the very first page) and you should see that all the records were lost due to the App restart. Hold that thought!
 
-- Back on your Workshop VM Terminal, let's check whether your MySQL DB instance is up and running, i.e. `status: create succeeded`. Please execute the following command: 
+- Let's get back to the MySQL DB: the `cf create-service p.mysql` process takes 3 to 4 minutes. Back on your Workshop VM Terminal, let's check whether your MySQL DB instance is up and running, i.e. `status: create succeeded`. Please execute the following command: 
 
 ```
-cf service $user-my-sql
+cf service $user-mysql
 ```
 
 - If you see `status: create succeeded`, then please proceed, otherwise please wait a minute or so until you see `status: create succeeded` in the output of the `cf service $user-my-sql` command.
 
-- Let's bind your MySQL instance to your `Petclinic` App. Please execute the following commmands:
+- Let's bind your MySQL instance to your `MovieFun` App. Please execute the following commmands:
 
 ```
-cf bind-service spring-petclinic $user-my-sql
-cf restage spring-petclinic
+cf bind-service $user-moviefun $user-mysql
+cf restage $user-moviefun
 ```
 
 - The `cf restage` is necessary because TAS will need to add dependencies/libraries and make configuration adjustments so that your `Petclinic` App may be able to use the MySQL DB instance that you created.
 
 - Now let's repeat the same steps as before:
 
-1. Access your `Petclinic` App at the URL `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID.
-
-2. Click on **Find Owners** and **add** a new owner and a new pet. The data you entered is stored in the MySQL DB.
-
-3. Click on **Find Owners** and look for the new owner you added, just to make sure the functionality is working as expected.
-
-4. Back on your Workshop VM Terminal, execute the following command:
+1. Access your `MovieFun` app using a browser.
+2. Click on **set-up** and then on **Go to main app** 
+3. Execute the following command:
 
 ```
-cf restart spring-petclinic
+cf restart $user-moviefun
 ```
 
-5. Now go back to your `Petclinic` App at `http://userID-pets.apps.ourpcf.com` where `userID` maps to your UserID. Look for your recently added pet owner using the **Find Owners** functionality. You should see that the data survived the restart and continues to be available to you. 
+4. Once the `MovieFun` is up and running, open a browser to access the App and click on **index** to go straight to the `MovieFun` App screen and check whether your data survived the restart thanks to the MySQL DB.
 
 
 
