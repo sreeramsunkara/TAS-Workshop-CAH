@@ -367,16 +367,19 @@ start command:   JAVA_OPTS="-agentpath:$PWD/.java-buildpack/open_jdk_jre/bin/jvm
 
 ![](./images/petclinic.png)
 
-- Now execute the following commands to star a `cf run-task` command:
+- Now execute the following commands to run a `cf run-task`:
 
 ```
 export my_route=$(cf app spring-petclinic | grep route | awk '{ print $2 }')
-echo $my_route
-export my_task="(cf run-task spring-petclinic \"while (true); do curl -k http://"$my_route"; done\" --name $user-task)"
+export my_task="cf run-task spring-petclinic \"while (true); do curl -k http://"$my_route"; done\" --name $user-task"
 echo $my_task
-"${my_task[@]}"
+echo $my_task | set --
+"$@"
 ```
 
+-  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate from your `Org` to your `Workshop Space` to your `App` using the [Apps Manager](https://apps.sys.ourpcf.com/):
+
+![](./images/SpringAppTAS.png)
 
 **Let's recap:** 
    - You used Maven to create a `jar` file which youu executed locally on your Ubuntu Workshop VM.
