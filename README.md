@@ -280,7 +280,14 @@ df -h
 kill -9 $(ps -ef | grep diego-sshd | head -n 1 | awk '{ print $2 }')
 ```
 
-- Now take a look at how your `chess` App is doing using the following command:
+- You should see an error message similar to the one shown below:
+
+```
+FAILED
+Error: wait: remote command exited without exit status or exit signal
+```
+
+- Now take a look at how your `chess` App is doing using the following command on your Workshop VM:
 
 ```
 cf events $user-chess
