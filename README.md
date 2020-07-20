@@ -652,28 +652,34 @@ cf env $user-moviefun
 cf scale $user-moviefun -i 3
 ```
 
-- Go back to Apps Manager and access the home page of your `MovieFun` App. Now follow the example shown below to **terminate instance 0**. Don't stop there, go ahead and click on **terminate** for all three App Instances:
+- Go back to Apps Manager and access the home page of your `MovieFun` App. Now follow the example shown below to **terminate instance**. Go ahead and click on **terminate** for all three App Instances:
 
 ![](./images/terminate-instance.png)
 
-- Once you have clicked on **terminate** for all three instances, you should see messages at the top of the screen stating that: `Success: Instance "X" will be terminated and recreated.`
+- As you have click on **terminate** for all three instances, you should see messages at the top of the screen stating that: `Success: Instance will be terminated and recreated.`
 
-- So now we know that every instance of your `MovieFun` App has been replaced. Try to access your `MovieFun` App, and validate that your data has not been lost.
+- Now try to access your `MovieFun` App, and validate that your data has not been lost.
 
+- Let's clean-up. Please execute the following commands:
 
+```
+cf unbind-service $user-moviefun $user-mysql
+cf delete-service $user-mysql
+```
 
+- Please contine by executing the following commands:
 
+```
+cf scale $user-moviefun -i 1
+cf restage $user-moviefun
+```
 
-
-
-
-
-
-
+- We now have `MovieFun` running again with its in-memory H2 database.
 
 
 **Let's recap:** 
-- Autoscaling seamlessly scales our App horizontally by increasing or decreasing the number of App Instances to meet your desired throughput, latency, %CPU, ... goals.
+- Creating a Service requires one simple command: `cf create-service`
+- As long as the service is 
 
 - Congratulations, you have completed LAB-6.
 
