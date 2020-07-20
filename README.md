@@ -640,11 +640,28 @@ cf restart $user-moviefun
 
 ![](./images/mysql-creds.png)
 
-- As shown in the picture above, please click on the 3 vertical dotts and then on the **View Credentials** link to view the environment variables that were bound to your App. These credentials are unique and when the App Deployment happens in a production environment, we typically place them in CredHub to futher protect them from prying eyes. Please execute the following commands to see your App's ennvironment variables:
+- As shown in the picture above, please click on the 3 vertical dotts and then on the **View Credentials** link to view the environment variables that were bound to your App. These credentials are unique and when the App Deployment happens in a production environment, we typically place them in CredHub to futher protect them from prying eyes. Please execute the following command to see your App's ennvironment variables:
 
 ```
 cf env $user-moviefun
 ```
+
+- You can also scale your `MovieFun` App horizontally and TAS will make sure that every instance of your App is bound correctly to the  MySQL DB. Please execute the following commands:
+
+```
+cf scale $user-moviefun -i 3
+```
+
+- Go back to Apps Manager and access the home page of your `MovieFun` App. Now follow the example shown below to **terminate instance 0**. Don't stop there, go ahead and click on **terminate** for all three App Instances:
+
+![](./images/terminate-instance.png)
+
+- Once you have clicked on **terminate** for all three instances, you should see messages at the top of the screen stating that: `Success: Instance "X" will be terminated and recreated.`
+
+- So now we know that every instance of your `MovieFun` App has been replaced. Try to access your `MovieFun` App, and validate that your data has not been lost.
+
+
+
 
 
 
