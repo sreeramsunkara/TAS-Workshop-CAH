@@ -664,10 +664,10 @@ cf scale $user-moviefun -i 3
 
 ```
 cf unbind-service $user-moviefun $user-mysql
-cf delete-service $user-mysql
 cf restage $user-moviefun
 ```
 
+- Note we're not deleting the MySQL DB instance because we'll need it in the next Lab.
 
 **Let's recap:** 
 - Creating a Service requires one simple command: `cf create-service` which can be simplified to `cf cs`
@@ -685,7 +685,22 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
  ![](./images/lab.png)   
 
-- TAS makes it really easy ...
+- Let's deploy an App where a service calls another service that calls a DB. Please execute the following commands on your Workshop VM:
+
+```
+cd ~
+git clone https://github.com/rm511130/cities
+cd cities
+./gradlew clean build
+```
+
+- Once the build process has completed, please proceed with the following commands:
+
+```
+cd ~/cities/cities-service
+
+
+
 
 ```
 cd ~
