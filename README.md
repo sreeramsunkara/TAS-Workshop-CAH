@@ -555,7 +555,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 
 -----------------------------------------------------
-## LAB-6: Services and Service Instances 
+## LAB-6: Services and Service Instances
 
  ![](./images/lab.png)   
 
@@ -660,70 +660,20 @@ cf scale $user-moviefun -i 3
 
 - Now try to access your `MovieFun` App, and verify that your data has not been lost because it has been persisted in the MySQL DB.
 
-- Let's now take a look at a very flexible way of consuming services: the `cf cups` command. The long version of the command is `cf create-user-provided-service`.
-
-- Let's unbind your MySQL DB from your `MovieFun` App. Please execute the following command:
+- Let's clean-up. Please execute the following commands:
 
 ```
 cf unbind-service $user-moviefun $user-mysql
-```
-- The act of unbinding a service eliminates the URI and access credentials which only exist while the MySQL DB is bound to an App. However, there's the concept of `service keys` which can be employed to request access credentials to the MySQL instance without needing to bind it to any Apps. Please execute the following commands:
-
-```
-cf create-service-key $user-mysql my_service_key
-cf service-key $user-mysql my_service_key | tee | awk 'NR>2 {print $0}' > service-keys.json 
-```
-- You should see an output similar to the one shown below:
-
-```
-Getting key my_service_key for service instance user1-mysql as user1...
-
-{
- "hostname": "q-n3s0.q-g319.bosh",
- "jdbcUrl": "jdbc:mysql://q-n3s0.q-g319.bosh:3306/service_instance_db?user=d8ce31cf1ca54ad48974cc3fa105ebdb\u0026password=nher55d02bpw0077\u0026useSSL=false",
- "name": "service_instance_db",
- "password": "nher55d02bpw0077",
- "port": 3306,
- "uri": "mysql://d8ce31cf1ca54ad48974cc3fa105ebdb:nher55d02bpw0077@q-n3s0.q-g319.bosh:3306/service_instance_db?reconnect=true",
- "username": "d8ce31cf1ca54ad48974cc3fa105ebdb"
-}
-```
-
-- Your MySQL DB now has an entry point, a port, and the necessary username & pasword combination to be accessed. You can establish a user-provided-service to access this DB using its service-keys. Please execute the following commands:
-
-```
-cf cups $user-my-db -p ./service-keys.json
-cf bind-service $user-moviefun $user-my-db
-cf restage $user-moviefun
-```
-- Once the commands shown above have completed, you can execute the command below to verify that the new service-keys have been passed to your `MovieFun` App as part of the binding process.
-
-```
-cf env $user-moviefun
-```
-
-
-
-
-
-
-```
 cf delete-service $user-mysql
-```
-
-- Please contine by executing the following commands:
-
-```
-cf scale $user-moviefun -i 1
 cf restage $user-moviefun
 ```
-
-- We now have `MovieFun` running again with its in-memory H2 database.
 
 
 **Let's recap:** 
-- Creating a Service requires one simple command: `cf create-service`
-- As long as the service is 
+- Creating a Service requires one simple command: `cf create-service` which can be simplified to `cf cs`
+- Binding a Service Instance to an App requires one simple command: `cf bind-service` which can be simplified to `cf bs`
+- To make sure your App is aware of a newly bound Service Instance, you should also execute: `cf restage AppName`
+- We used an older Java WAR file application called MovieFun to demonstrate how TAS can run all kinds of frameworks and languages with the help of buildpacks.
 
 - Congratulations, you have completed LAB-6.
 
