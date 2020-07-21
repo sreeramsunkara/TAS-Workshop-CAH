@@ -806,7 +806,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 - The danger with Docker Images, when they are the object supplied to TAS, is that no one knows what's inside the "black-box". Pro-active scanning can detect issues with Docker Images, but it's up to the original developers to check whether the OS and middleware layers are up to date, functioning with each other, and not exposed to known CVEs. This is toil that TAS eliminates if you just provide it `code` instead of `image`. Let TAS build, deploy, run and monitor your code as a platform-built image, and everyone can sleep better at night.
 
-![](./images/docker.png)
+![](./images/docker-problem.png)
 
 - Having explained the concept of platform-built images and the value it represents, given that TAS is essentially building OSS CNCF (Open Source Cloud Native Computing Foundation) compliant "Docker Images" for you, it should come as no surprise that TAS understands and can run Docker Images as containers. You are exposing yourself and your company to potential risks, but it can be done.
 
