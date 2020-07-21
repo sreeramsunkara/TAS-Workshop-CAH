@@ -795,6 +795,41 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 
 
+-----------------------------------------------------
+## LAB-8: Docker Images
+
+ ![](./images/lab.png)   
+
+- Every time you `cf push` an App, TAS does a lot of work on your behalf. Some of this work is in the InfoSec space: i.e. security. VMware is constantly scanning and monitoring countless combinations of frameworks and libraries to make sure they are protected against known CVEs (Common Vulnerabilities and Exposures). Our SLA is to deliver to you patches that can be seamlessly implemented by Operations at the Operating System and Dependencies levels as TAS builds, deploys and runs your App in safe containers:
+
+![](./images/cnb.png)
+
+- The danger with Docker Images, when they are the object supplied to TAS, is that no one knows what's inside the "black-box". Pro-active scanning can detect issues with Docker Images, but it's up to the original developers to check whether the OS and middleware layers are up to date, functioning with each other, and not exposed to known CVEs. This is toil that TAS eliminates if you just provide it `code` instead of `image`. Let TAS build, deploy, run and monitor your code as a platform-built image, and everyone can sleep better at night.
+
+![](./images/docker.png)
+
+- Having explained the concept of platform-built images and the value it represents, given that TAS is essentially building OSS CNCF (Open Source Cloud Native Computing Foundation) compliant "Docker Images" for you, it should come as no surprise that TAS understands and can run Docker Images as containers. You are exposing yourself and your company to potential risks, but it can be done.
+
+- Please execute the following commands:
+
+```
+cd ~
+mkdir -p fact
+cd ~/fact
+cf push $user-fact --docker-image rmeira/fact
+curl $user-fact.apps.ourpcf.com/1000; echo
+```
+
+**Let's recap:** 
+- TAS builds and runs container images using curate components at the OS and middleware/dependencies layers. All TAS needs is your code.
+- TAS is able to run container images built using Docker on your PC or Mac. These images are executed in restricted containers that are not allowed to assume `root` level access, but what is placed in-side the Docker Image is the responsibility of the developer in charge. 
+- By the way, the `fact` Docker Image used in this lab, was scanned on 7/21/2020 and presented no exposures to known CVEs.
+
+- Congratulations, you have completed LAB-8.
+
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+
+
 
 
 
