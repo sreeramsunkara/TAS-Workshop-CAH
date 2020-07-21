@@ -747,13 +747,15 @@ curl $CitiesServiceUrl/cities/62
 ```
 cf create-user-provided-service cities-ws -p "{ \"citiesuri\":\"http://$CitiesServiceUrl\" }"
 cf services
+```
+- We're using a `cf cups` _(cups = create-user-provided-service)_ command to pass the URI of your `cities-service` as an environment variable to the `cities-ui` service. The `manifest.yml` we will be using next, includes a line that binds the `cities-ws` _(ws = web service)_ to the  `cities-ui` service.
+
+```
 cd ~/cities/cities-ui
 envsubst < manifest.yml_proto > manifest.yml
 cat manifest.yml
 cf push
 ```
-
-- We're using a `cf cups` _(cups = create-user-provided-service)_ command to pass the URI of your `cities-service` as an environment variable to the `cities-ui` service. The `manifest.yml` includes a line that binds the `cities-ws` _(ws = web service)_ to the  `cities-ui` service.
 
 - Once the `cf push` has completed, we test the complete application by using a browser opened at: `http://userID-cities-ui.apps.ourpcf.com` where `userID` is the UserID you have been using throughout this workshop.
 
