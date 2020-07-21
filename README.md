@@ -703,7 +703,11 @@ cat manifest.yml
 cf push
 ```
 
-- Once the `cf push` has completed, we can test our code by openning a browser at `http://userID-cities-hello.apps.ourpcf.com` where `userID` maps to the UserID you have been using during this workshop. If all is well, then please proceed by executing the following commands:
+- Once the `cf push` has completed, we can test our code by openning a browser at `http://userID-cities-hello.apps.ourpcf.com` where `userID` maps to the UserID you have been using throughout this workshop. 
+
+![](./images/Welcome-Lab7.png)
+
+- If all is well and the screen-shot shown above is similar to what you saw when accessing the `cities-hello` URL, then please proceed by executing the following commands:
 
 ```
 cd ~/cities/cities-service
