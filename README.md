@@ -658,12 +658,56 @@ cf scale $user-moviefun -i 3
 
 - As you have click on **terminate** for all three instances, you should see messages at the top of the screen stating that: `Success: Instance will be terminated and recreated.`
 
-- Now try to access your `MovieFun` App, and validate that your data has not been lost.
+- Now try to access your `MovieFun` App, and verify that your data has not been lost because it has been persisted in the MySQL DB.
 
-- Let's clean-up. Please execute the following commands:
+- Let's now take a look at a very flexible way of consuming services: the `cf cups` command. The long version of the command is `cf create-user-provided-service`.
+
+- Let's unbind your MySQL DB from your `MovieFun` App. Please execute the following command:
 
 ```
 cf unbind-service $user-moviefun $user-mysql
+```
+- The act of unbinding a service eliminates the URI and access credentials which only exist while the MySQL DB is bound to an App. However, there's the concept of `service keys` which can be employed to request access credentials to the MySQL instance without needing to bind it to any Apps. Please execute the following commands:
+
+```
+cf create-service-key $user-mysql my_service_key
+cf service-key $user-mysql my_service_key | tee | awk 'NR>2 {print $0}' > service-keys.json 
+```
+- You should see an output similar to the one shown below:
+
+```
+Getting key my_service_key for service instance user1-mysql as user1...
+
+{
+ "hostname": "q-n3s0.q-g319.bosh",
+ "jdbcUrl": "jdbc:mysql://q-n3s0.q-g319.bosh:3306/service_instance_db?user=d8ce31cf1ca54ad48974cc3fa105ebdb\u0026password=nher55d02bpw0077\u0026useSSL=false",
+ "name": "service_instance_db",
+ "password": "nher55d02bpw0077",
+ "port": 3306,
+ "uri": "mysql://d8ce31cf1ca54ad48974cc3fa105ebdb:nher55d02bpw0077@q-n3s0.q-g319.bosh:3306/service_instance_db?reconnect=true",
+ "username": "d8ce31cf1ca54ad48974cc3fa105ebdb"
+}
+```
+
+- Your MySQL DB now has an entry point, a port, and the necessary username & pasword combination to be accessed. You can establish a user-provided-service to access this DB using its service-keys. Please execute the following commands:
+
+```
+cf cups $user-my-db -p ./service-keys.json
+cf bind-service $user-moviefun $user-my-db
+cf restage $user-moviefun
+```
+- Once the commands shown above have completed, you can execute the command below to verify that the new service-keys have been passed to your `MovieFun` App as part of the binding process.
+
+```
+cf env $user-moviefun
+```
+
+
+
+
+
+
+```
 cf delete-service $user-mysql
 ```
 
@@ -684,6 +728,20 @@ cf restage $user-moviefun
 - Congratulations, you have completed LAB-6.
 
 Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+
+
+-----------------------------------------------------
+## LAB-7: Microservices-Based Application
+
+ ![](./images/lab.png)   
+
+- TAS makes it really easy ...
+
+```
+cd ~
+git clone  https://github.com/ewolff/microservice-cloudfoundry
+cd microservice-cloudfoundry/cd microservice-cloudfoundry-demo
+./mvnw clean package
 
 
 
