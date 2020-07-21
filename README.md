@@ -697,16 +697,75 @@ cd cities
 - Once the build process has completed, please proceed with the following commands:
 
 ```
-cd ~/cities/cities-service
+cd ~/cities/cities-hello
+envsubst < manifest.yml_proto > manifest.yml
+cat manifest.yml
+cf push
+```
 
-
-
+- Once the `cf push` has completed, we can test our code by openning a browser at `http://userID-cities-hello.apps.ourpcf.com` where `userID` maps to the UserID you have been using during this workshop. If all is well, then please proceed by executing the following commands:
 
 ```
-cd ~
-git clone  https://github.com/ewolff/microservice-cloudfoundry
-cd microservice-cloudfoundry/cd microservice-cloudfoundry-demo
-./mvnw clean package
+cd ~/cities/cities-service
+envsubst < manifest.yml_proto > manifest.yml
+cat manifest.yml
+cf push 
+```
+
+- Once the `cf push` has completed, we can test our `cities-service`. Please execute the following commands:
+
+```
+export CitiesServiceUrl=$(cf a | grep cities-service | awk '{ print $6 }')
+echo $CitiesServiceUrl
+curl $CitiesServiceUrl/cities/62
+```
+
+- You should see the following results indicating that your `cities-service` is bound to your MySQL DB and that it is responding to API calls.
+
+```
+{
+  "name" : "PLANO",
+  "county" : "COLLIN",
+  "stateCode" : "TX",
+  "postalCode" : "75074",
+  "latitude" : "+33.109044",
+  "longitude" : "-096.578819",
+  "_links" : {
+    "self" : {
+      "href" : "http://cities-service.apps.ourpcf.com/cities/62"
+    }
+  }
+}
+```
+
+- If your results match the ones shown above, please proceed with the following commands:
+
+```
+cf create-user-provided-service cities-ws -p "{ \"citiesuri\":\"http://$CitiesServiceUrl\" }"
+cf services
+cd ~/cities/cities-ui
+envsubst < manifest.yml_proto > manifest.yml
+cat manifest.yml
+cf push
+```
+
+- We're using a `cf cups` _(cups = create-user-provided-service)_ command to pass the URI of your `cities-service` as an environment variable to the `cities-ui` service. The `manifest.yml` includes a line that binds the `cities-ws` _(ws = web service)_ to the  `cities-ui` service.
+
+- Once the `cf push` has completed, we test the complete application by using a browser opened at: `http://userID-cities-ui.apps.ourpcf.com` where `userID` is the UserID you have been using throughout this workshop.
+
+
+**Let's recap:** 
+- You deployed several services to TAS in order to deploy a Postal Code search App:
+   - A cities-hello service just to make sure the `gradle` command worked as expected
+   - A cities-service that worked in the backend with a MySQL DB to which it was bound
+   - A cities-ws user-provided-service that wrapped the cities-service
+   - A cities-ui service bound to the cities-ws user-provided-service.
+
+- Congratulations, you have completed LAB-7.
+
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+
+
 
 
 
