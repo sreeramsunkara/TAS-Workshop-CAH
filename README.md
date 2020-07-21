@@ -761,6 +761,17 @@ cf push
 
 ![](./images/cities-app.png)
 
+- Once you are satisfied with the results, please execute the following commands to clean-up:
+
+```
+cf delete -f cities-hello
+cf us cities-service $user-mysql
+cf delete -f cities-service
+cf us cities-ui cities-ws
+cf ds -f cities-ws
+cf delete -f cities-ui
+cf ds -f $user-mysql
+```
 
 **Let's recap:** 
 - You deployed several services to TAS in order to deploy a Postal Code search App:
@@ -768,6 +779,15 @@ cf push
    - A cities-service that works with a MySQL DB to which it was bound
    - A cities-ws user-provided-service that wrapped the cities-service
    - A cities-ui service bound to the cities-ws user-provided-service
+- You deleted the Cities App:
+   - All the containers involved in running your App were unwired automatically from log collection and application performance monitoring.
+   - All the URLs, Firewall entries, and routes were also cleaned-up by TAS automatically for you.
+   - All containers and service definitions were deleted and their resources returned to the pool of resources available to TAS.
+   - All DB instances and their credentials were cleaned-up and their resources returned to the pook of resources available to TAS.
+- While Lab-7 was being executed:
+   - Other TAS users were isolated from your work (and vice-versa) given that their work was isolated within their Org.
+   - You could have given access to your Org and Space to any one of your colleagues, to increase the size of the team working on the project.
+   - No support tickets were opened at any point in time. 
 
 - Congratulations, you have completed LAB-7.
 
