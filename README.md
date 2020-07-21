@@ -759,13 +759,15 @@ cf push
 
 - Once the `cf push` has completed, we test the complete application by using a browser opened at: `http://userID-cities-ui.apps.ourpcf.com` where `userID` is the UserID you have been using throughout this workshop.
 
+![](./images/cities-app.png)
+
 
 **Let's recap:** 
 - You deployed several services to TAS in order to deploy a Postal Code search App:
    - A cities-hello service just to make sure the `gradle` command worked as expected
-   - A cities-service that worked in the backend with a MySQL DB to which it was bound
+   - A cities-service that works with a MySQL DB to which it was bound
    - A cities-ws user-provided-service that wrapped the cities-service
-   - A cities-ui service bound to the cities-ws user-provided-service.
+   - A cities-ui service bound to the cities-ws user-provided-service
 
 - Congratulations, you have completed LAB-7.
 
