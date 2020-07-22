@@ -131,7 +131,13 @@ start command:   $HOME/.bp/bin/start
 
 - Back on your Workshop VM, please execute a simple `ls` command to see the file that you `git cloned` to your Workshop VM. 
 
-- _A little bit of trivia:_ you should also take a look at the contents of `index.php` because they contain a very unique, self-contained piece of code that makes no additional calls to any other external libraries. Try making a few chess moves. It should not surprise you to know that Mr. Oscar Toledo is one of the world's top code obfuscators. 
+- _A little bit of trivia:_ you should also take a look at the contents of `index.php`:
+
+```
+cat index.php
+```
+
+- `index.php` is written in JavaScript. It contain a very unique piece of code that makes no additional calls to any external libraries. It should not surprise you to know that Mr. Oscar Toledo is one of the world's top code obfuscators. 
 
 **Let's recap:** 
 - You ssh'ed into your Workshop VM and verified the versions of certain installed CLIs (Command Line Interface) such as the cf CLI.
