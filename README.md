@@ -131,6 +131,8 @@ start command:   $HOME/.bp/bin/start
 
 - Back on your Workshop VM, please execute a simple `ls` command to see the file that you `git cloned` to your Workshop VM. 
 
+- _A little bit of trivia:_ you should also take a look at the contents of `index.php` because they contain a very unique, self-contained piece of code that makes no additional calls to any other external libraries. Try making a few chess moves. It should not surprise you to know that Mr. Oscar Toledo is one of the world's top code obfuscators. 
+
 **Let's recap:** 
 - You ssh'ed into your Workshop VM and verified the versions of certain installed CLIs (Command Line Interface) such as the cf CLI.
 - You used `cf login` to point to a TAS platform and to login. You then used `cf push` to  push your first App to TAS: a game of chess.
