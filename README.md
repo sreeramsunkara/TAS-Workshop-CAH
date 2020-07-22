@@ -616,7 +616,7 @@ cf bind-service $user-moviefun $user-mysql
 cf restage $user-moviefun
 ```
 
-- The `cf restage` is necessary because TAS will need to configuration adjustments so that your `MovieFun` App may be able to use the MySQL DB instance that you created.
+- The `cf restage` is necessary because TAS will need to make configuration adjustments so that your `MovieFun` App may be able to use the MySQL DB instance that you created.
 
 - Once the `cf restage` has finished, let's repeat the same process again:
 
