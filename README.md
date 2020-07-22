@@ -814,7 +814,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 cd ~
 mkdir -p fact
 cd ~/fact
-cf push $user-fact --docker-image rmeira/fact
+cf push $user-fact --docker-image rmeira/fact -m 100M
 curl $user-fact.apps.ourpcf.com/1000; echo
 ```
 
@@ -915,7 +915,7 @@ source ./tweaking_Index.cshtml_and_Program.cs.sh
 - Now let's `cf push` using the following command:
 
 ```
-cf push $user-dotnet -b dotnet_core_buildpack
+cf push $user-dotnet -b dotnet_core_buildpack -m 100M
 ```
 
 - Once the `cf push` has completed, please open a browser to test your .NET Core Welcome App. The URL will be `http://userID-dotnet.apps.ourpcf.com` where `UserID` is your UserID.
