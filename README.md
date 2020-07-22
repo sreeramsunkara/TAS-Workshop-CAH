@@ -12,7 +12,7 @@
 
 - At a glance:
    - [Developers love TAS](https://www.youtube.com/watch?v=xdw_9dADM-4) because it frees and empowers them to do what they love most: to code.
-   - TAS is a Cloud Native Polyglot platform supporting Java, Spring, .NET, NodeJs, ...
+   - TAS is a Cloud Native Polyglot platform supporting Java, Spring, .NET, NodeJS, ...
    - TAS is an HA platform that runs on Any Cloud delivering the same developer experience on AWS, Azure, GCP and vSphere.
    - TAS helps companies deliver better software, faster and more frequently.
    - TAS Operators can patch and upgrade the platform without downtime.
@@ -26,12 +26,12 @@
 - This self-paced workshop includes presentations, videos, demos and most of all, hands-on labs. 
 - The labs are interdependent and must be executed in order.
 - The lab environments will only be available during the ~5hrs (a limited window of time) dedicated for the joint start and self-paced completion of the workshop.
-- Please use the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) to claim a userID for this workshop. For example, Ralph Meira is user1.
+- Please use the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) to claim a UserID for this workshop. For example, Ralph Meira is user1.
 - Update the same [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing)  as you progress through the Labs, by placing an "X" in the appropriate column.
 - Each workshop participant will be assigned a Ubuntu VM previously set up for the execution of hands-on Labs. Your Laptop or Desktop will only be used for two purposes: 
      - SSH'ing or PuTTY'ing into the Ubuntu VM 
      - Browsing web pages
-- When carrying out hands-on labs, you will be asked to cut-&-paste the commands shown `in boxes like this one` from this github page to your Ubuntu VM Terminal Window. However, when issuing commands, please make sure to alter the userID to match the one you have claimed, e.g.:
+- When carrying out hands-on labs, you will be asked to cut-&-paste the commands shown `in boxes like this one` from this GitHub page to your Ubuntu VM Terminal Window. However, when issuing commands, please make sure to alter the UserID to match the one you have claimed, e.g.:
   - `ssh -i fuse.pem ubuntu@user3.pks4u.com` is for `user3` 
   - `ssh -i fuse.pem ubuntu@user15.pks4u.com` is for `user15` 
 - In order to simplify the cut-&-paste-&-replace steps described above, once you are operating on your Ubuntu VM Terminal, we will define environment variables that will hold your specific login name as claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing). In this way, the cut-&-paste steps will not require you to edit the command line before pressing `return`.
@@ -73,17 +73,17 @@ ssh -i ~/Downloads/fuse.pem ubuntu@user1.pks4u.com
 
 - Once logged in, you can ignore any messages that ask you to perform a `do-release-upgrade`. 
 
-- Please check whether the greeting information matches your UserID. For example, `user22` should see something like this:
+- Please check whether the greeting information matches your UserID. For example, `user1` should see something like this:
 
 ```
-my_number is 22
-openjdk version "11.0.7" 2020-04-14
-OpenJDK Runtime Environment (build 11.0.7+10-post-Ubuntu-2ubuntu218.04)
-OpenJDK 64-Bit Server VM (build 11.0.7+10-post-Ubuntu-2ubuntu218.04, mixed mode, sharing)
-Your UserID is user22
-Your DevopsID is devops22
-Your Namespace in the Shared-Cluster is namespace22
-Your role in the Shared-Cluster is vmware-role22
+my_number is 1
+openjdk version "1.8.0_252"
+OpenJDK Runtime Environment (build 1.8.0_252-8u252-b09-1~18.04-b09)
+OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)
+Your UserID is user1
+Your DevopsID is devops1
+Your Namespace in the Shared-Cluster is namespace1
+Your role in the Shared-Cluster is vmware-role1
 ```
 
 - If you believe your greeting information to be wrong, please alert the workshop organizers. 
@@ -111,7 +111,7 @@ cf login -a api.sys.ourpcf.com -u $user -p password
 cf push $user-chess
 ```
 
-- Once the `cf push` operation ends, you should see the a message similar to the one shown below:
+- Once the `cf push` operation ends, you should see a message similar to the one shown below:
 
 ```
 name:              user1-chess
@@ -135,7 +135,7 @@ start command:   $HOME/.bp/bin/start
 
 **Let's recap:** 
 - You ssh'ed into your Workshop VM and verified the versions of certain installed CLIs (Command Line Interface) such as the cf CLI.
-- You used `cf login` to point to a TAS plaform and login. You then used `cf push` to  push your first App to TAS: a game of chess.
+- You used `cf login` to point to a TAS platform and to login. You then used `cf push` to  push your first App to TAS: a game of chess.
 - Please note that:
   - Your Chess App has a FQDN (fully qualified domain name)
   - Your App is secured by a valid Certificate which enables HTTPS communication
@@ -176,11 +176,11 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 - Follow the numbers on the picture above. We will let you know when to click on them.
 
-1. Your `org` is a logical segmentation of your PaaS environment that allows `Org Managers` to control settings and resources, such as `spaces`, `domains`, and `members` associated with the selected `space`, in Apps Manager. Corporations tipically use `Org` structures to align/organize TAS around Business Units, Company Divisions, Products, or Program Areas.
+1. Your `org` is a logical segmentation of your PaaS environment that allows `Org Managers` to control settings and resources, such as `spaces`, `domains`, and `members` associated with the selected `space`, in Apps Manager. Corporations typically use `Org` structures to align/organize TAS around Business Units, Company Divisions, Products, or Program Areas.
 
-2. `Orgs` can have one or many `Spaces`. `Spaces` are often named after Life-Cycle-Mgmt phases such as Prod, Dev, QA, Test, SandBox. It's within `Spaces` that Apps are executed. `Memory` is a resource managed at the `Org` level. In the diagram shown above, next to the #2 yellow pointer, your `Org` is using a certain percentage of the 10GB allocated to it by the Platform Team of administrators.
+2. `Orgs` can have one or many `Spaces`. `Spaces` are often named after Life-Cycle-Mgmt phases such as Prod, Dev, QA, Test, Sandbox. It's within `Spaces` that Apps are executed. `Memory` is a resource managed at the `Org` level. In the diagram shown above, next to the #2 yellow pointer, your `Org` is using a certain percentage of the 10GB allocated to it by the Platform Team of administrators.
 
-3. Your `Org` has only one `Space` at the present time. When `user9` first logged into TAS using `cf login` on the terminal session, he/she landed at the `workshop` space witin `org9`. That's were we will find the `chess` App.
+3. Your `Org` has only one `Space` at the present time. When `user9` first logged into TAS using `cf login` on the terminal session, he/she landed at the `workshop` space within `org9`. That's where we will find the `chess` App.
 
 4. Yellow pointer #4 shows who is logged-in the Apps Manager session.
 
@@ -224,7 +224,7 @@ cf scale $user-chess -m 100M -i 3
 cf events $user-chess
 ```
 
-- Let's create another `Space` under your `Org`, and allow one of your colleagues to access this new `Space`. Execute the following command to create a `dev` space under your Org:
+- Let's create another `Space` under your `Org` and allow one of your colleagues to access this new `Space`. Execute the following command to create a `dev` space under your Org:
 
 ```
 cf create-space dev -o org$my_number
@@ -236,14 +236,14 @@ cf create-space dev -o org$my_number
 for i in {1..22}; do cf set-space-role user$i org$my_number dev SpaceDeveloper; done
 ```
 
-- You can now ask any of your colleagues to access the `dev space` in your `org`. The same will apply to you, so use the following command to see what `orgs` are available for you to target, and then target a new `org` that is not yours to access its `dev space`. The `cf target` command below will try to target the `org` and `dev space` of your preceding colleague: e.g. if you are `user5`, he `cf target` command below will attempt to target `org4` and its `dev space`. The `cf target` command may fail if your colleague hasn't yet given you access to his/her `org` and `dev space`, so you can always comme back later to see the next two commands working, or you can adjust the `-o orgID` to one that is available to you.
+- You can now ask any of your colleagues to access the `dev space` in your `org`. The same will apply to you, so use the following command to see what `orgs` are available for you to target, and then target a new `org` that is not yours to access its `dev space`. The `cf target` command below will try to target the `org` and `dev space` of your preceding colleague: e.g. if you are `user5`, he `cf target` command below will attempt to target `org4` and its `dev space`. The `cf target` command may fail if your colleague hasn't yet given you access to his/her `org` and `dev space`, so you can always come back later to see the next two commands working, or you can adjust the `-o orgID` to one that is available to you.
 
 ```
 cf orgs
 cf target -o org$((my_number-1)) -s dev           
 ```
 
-- Let's execute a few more `cf` CLI commands. Looking at the next few commands, it should be easy to undestand what they do. The point of this exercise is just to give you an idea of what you can do with the `cf` CLI. If you have any questions, please ask them to the meeting organizers.
+- Let's execute a few more `cf` CLI commands. Looking at the next few commands, it should be easy to understand what they do. The point of this exercise is just to give you an idea of what you can do with the `cf` CLI. If you have any questions, please ask them to the meeting organizers.
 
 ```
 cd ~/chess
@@ -274,7 +274,7 @@ cat /etc/*release | head -n 4
 df -h
 ```
 
-- The next command you will execute is distructive in nature. We will be `killing` a critical process in the container you are logged in to see what `TAS` is going to do. Please execute the following command:
+- The next command you will execute is destructive in nature. We will be `killing` a critical process in the container you are logged in to see what `TAS` is going to do. Please execute the following command:
 
 ```
 kill -9 $(ps -ef | grep diego-sshd | head -n 1 | awk '{ print $2 }')
@@ -299,7 +299,7 @@ cf app $user-chess
 **Let's recap:** 
    - You now know how to access your Apps Manager GUI.
    - You should also be comfortable with the concept of Orgs and Spaces, and the use of the `cf` CLI.
-   - You created a new `space` within your `org`, and granted access so that your colleagues could use it.
+   - You created a new `space` within your `org` and granted access so that your colleagues could use it.
    - You experimented with `cf logs` and `cf events`
    - You saw how `TAS` quickly recovered your App after it was forced to crash.
 
@@ -385,14 +385,14 @@ echo $my_task | sh
 echo $my_task
 ```
 
-- The `Linux Shell` commnands shown above assemble a simple one-line command to execute a `cf run-task`. The `task` performs `curl` commands against the URL of your `Petclinic` App. The actual one-line command is contained in the `$my_task` variable which was `echo'ed` out for you to see.
+- The `Linux Shell` commands shown above assemble a simple one-line command to execute a `cf run-task`. The `task` performs `curl` commands against the URL of your `Petclinic` App. The actual one-line command is contained in the `$my_task` variable which was `echo'ed` out for you to see.
 
 -  Now let's take a look at [Apps Manager](https://apps.sys.ourpcf.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](https://apps.sys.ourpcf.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
 
 ![](./images/SpringAppTAS.png)
 
 **Let's recap:** 
-   - You used Maven to create a `jar` file which youu executed locally on your Ubuntu Workshop VM.
+   - You used Maven to create a `jar` file which you executed locally on your Ubuntu Workshop VM.
    - You then used `cf push` to push your `Petclinic` App to `TAS`, and you used a browser to validate that it was working as expected.
    - You now have two Apps running on TAS: `Chess` & `Petclinic`. 
    - Your `Petclinic` App is being warmed-up by a never-ending `while (true)` loop which was executed as a `cf run-task`. We will come back to this area in a subsequent lab, when we will address App auto-scaling.
@@ -405,7 +405,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 -----------------------------------------------------
 
-## LAB-4: Blue-Green, Zero-Downtime-Deploymemt
+## LAB-4: Blue-Green, Zero-Downtime-Deployment
 
  ![](./images/lab.png)   
 
@@ -451,7 +451,7 @@ cf map-route $user-chess-v2 apps.ourpcf.com --hostname $user-chess
 cf stop $user-chess
 ```
 
-- You still have access to your first version of the `Chess` App with it's 100MB of RAM, but the App now serving the request on the same URL is the v2 which is now sized to consume 99MB of RAM.
+- You still have access to your first version of the `Chess` App with its 100MB of RAM, but the App now serving the request on the same URL is the v2 which is now sized to consume 99MB of RAM.
 
 ```
 cf apps
@@ -508,7 +508,7 @@ chmod +x cf_push_example_binary_buildpack.sh
 
 1. Using your Apps Manager, navigate to your `Petclinic` overview page and please click on **Enable Autoscaling**
 
-2. Click on **Manage Auutoscaling**
+2. Click on **Manage Autoscaling**
 
 3. An autoscaling tab will pop from the right side of your browser. Click on _Scaling Rules_ **Edit**  
 
@@ -522,11 +522,11 @@ chmod +x cf_push_example_binary_buildpack.sh
 
 8. On the _INSTANCE LIMITS_ section, set _Minimum_ to **1** and set _Maximum_ to **10** and then hit apply changes.
 
-9. You can now **close** the _AutoScaling Tab_ by clicking on the *x* at the top left hand corner of the tab.
+9. You can now **close** the _Autoscaling Tab_ by clicking on the *x* at the top left-hand corner of the tab.
 
 10. Now observe the system at work.
 
-- Can this type of scaling be done via scripts and configuration files? Yes, absolutely. The first step is to extend the `cf` CLI features by using plug-ins. Let's add the _Cloud Foundry CLI AutoScaler Plug-in_ to your Workshop VM. Please execute the following commands:
+- Can this type of scaling be done via scripts and configuration files? Yes, absolutely. The first step is to extend the `cf` CLI features by using plug-ins. Let's add the _Cloud Foundry CLI Autoscaler Plug-in_ to your Workshop VM. Please execute the following commands:
 
 ```
 cf install-plugin -r CF-Community app-autoscaler-plugin
@@ -589,7 +589,7 @@ mvn clean package -DskipTests -Dmaven.test.skip=true
 cf push $user-moviefun
 ```
 
-- The `MovieFun` App requires the use of the [TomEE Buildpack](https://github.com/cloudfoundry-community/tomee-buildpack) because it is an older JVM based application. The TomEE Buildpack is designed to run many JVM-based applications (Grails, Groovy, Java Main, Play Framework, Spring Boot, and Java EE Web Profile) with no additional configuration. It supports configuration of the standard components, and extension to add custom components. This specific buildpack has been customised to use the Tomcat Web Server.  
+- The `MovieFun` App requires the use of the [TomEE Buildpack](https://github.com/cloudfoundry-community/tomee-buildpack) because it is an older JVM based application. The TomEE Buildpack is designed to run many JVM-based applications (Grails, Groovy, Java Main, Play Framework, Spring Boot, and Java EE Web Profile) with no additional configuration. It supports configuration of the standard components, and extension to add custom components. This specific buildpack has been customized to use the Tomcat Web Server.  
 
 - You may have noticed that the `cf buildpacks` command did not show the `TomEE Buildpack` as being installed in TAS, but we were able to use its URL in the `manifest.yml` file. This technique opens your world to many more framework and languages available at: https://github.com/cloudfoundry-community/cf-docs-contrib/wiki/Buildpacks
 
@@ -615,7 +615,7 @@ cf service $user-mysql
 
 - If you see `status: create succeeded`, then please proceed, otherwise please wait a minute or so until you see `status: create succeeded` in the output of the `cf service $user-my-sql` command.
 
-- Let's bind your MySQL instance to your `MovieFun` App. Please execute the following commmands:
+- Let's bind your MySQL instance to your `MovieFun` App. Please execute the following commands:
 
 ```
 cf bind-service $user-moviefun $user-mysql
@@ -640,7 +640,7 @@ cf restart $user-moviefun
 
 ![](./images/mysql-creds.png)
 
-- As shown in the picture above, please click on the 3 vertical dotts and then on the **View Credentials** link to view the environment variables that were bound to your App. These credentials are unique and when the App Deployment happens in a production environment, we typically place them in CredHub to futher protect them from prying eyes. Please execute the following command to see your App's ennvironment variables:
+- As shown in the picture above, please click on the 3 vertical dots and then on the **View Credentials** link to view the environment variables that were bound to your App. These credentials are unique and when the App Deployment happens in a production environment, we typically place them in CredHub to further protect them from prying eyes. Please execute the following command to see your App's environment variables:
 
 ```
 cf env $user-moviefun
@@ -703,7 +703,7 @@ cat manifest.yml
 cf push
 ```
 
-- Once the `cf push` has completed, we can test our code by openning a browser at `http://userID-cities-hello.apps.ourpcf.com` where `userID` maps to the UserID you have been using throughout this workshop. 
+- Once the `cf push` has completed, we can test our code by opening a browser at `http://userID-cities-hello.apps.ourpcf.com` where `userID` maps to the UserID you have been using throughout this workshop. 
 
 ![](./images/Welcome-Lab7.png)
 
@@ -782,8 +782,8 @@ cf ds -f $user-mysql
 - You deleted the Cities App:
    - All the containers involved in running your App were unwired automatically from log collection and application performance monitoring.
    - All the URLs, Firewall entries, and routes were also cleaned-up by TAS automatically for you.
-   - All containers and service definitions were deleted and their resources returned to the pool of resources available to TAS.
-   - All DB instances and their credentials were cleaned-up and their resources returned to the pook of resources available to TAS.
+   - All containers and service definitions were deleted, and their resources returned to the pool of resources available to TAS.
+   - All DB instances and their credentials were cleaned-up and their resources returned to the pool of resources available to TAS.
 - While Lab-7 was being executed:
    - Other TAS users were isolated from your work (and vice-versa) given that their work was isolated within their Org.
    - You could have given access to your Org and Space to any one of your colleagues, to increase the size of the team working on the project.
@@ -803,7 +803,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ![](./images/cnb.png)
 
-- The danger with Docker Images, when they are the object supplied to TAS, is that no one knows what's inside the "black-box". Pro-active scanning can detect issues with Docker Images, but it's up to the original developers to check whether the OS and middleware layers are up to date, functioning with each other, and not exposed to known CVEs. This is toil that TAS eliminates if you just provide it `code` instead of `image`. Let TAS build, deploy, run and monitor your code as a platform-built image, and everyone can sleep better at night.
+- The danger with Docker Images, when they are the object supplied to TAS, is that no one knows what's inside the "black-box". Pro-active scanning can detect issues with Docker Images, but it's up to the original developers to check whether the OS and middleware layers are up to date, functioning with each other, and not exposed to known CVEs. This is toil that TAS eliminates if you simply provide it your `code` instead of a pre-packaged `image`. Let TAS build, deploy, run and monitor your code as a platform-built image, and everyone can sleep better at night.
 
 ![](./images/docker-problem.png)
 
@@ -869,7 +869,7 @@ CTRL-Z
 bg
 ``` 
 
-- The `bg` comamnd runs the previous process in the background. We can now test your `fact` program by using the following command. Please make sure to use your `port` number and **not** the `44601` shown below when you execute the next command:
+- The `bg` command runs the previous process in the background. We can now test your `fact` program by using the following command. Please make sure to use your `port` number and **not** the `44601` shown below when you execute the next command:
 
 ```
 curl 127.0.0.1:44601/100; echo
