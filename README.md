@@ -925,6 +925,7 @@ cf push $user-dotnet -b dotnet_core_buildpack
   - In Lab-9 your code was written in Go Lang. 
   - The `Chess` App was an example of JavaScript. 
   - `MovieFun` and `Petclinic` exemplified Java and Spring.
+  - `Curly` was written in `C`.
   - Lab-10 demonstrated TAS support for .NET Core.
 
 - Congratulations, you have completed LAB-10 and finished the Workshop.
