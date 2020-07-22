@@ -453,7 +453,7 @@ cf apps
 - We can complete the switch by deleting the old version of the `Chess` App. Please execute the following commands:
 
 ```
-cf delete $user-chess
+cf delete -f $user-chess
 cf apps
 ```
 
