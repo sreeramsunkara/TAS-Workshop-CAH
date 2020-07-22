@@ -778,7 +778,7 @@ cf ds -f $user-mysql
    - A cities-service that works with a MySQL DB to which it was bound
    - A cities-ws user-provided-service that wrapped the cities-service
    - A cities-ui service bound to the cities-ws user-provided-service
-- After testing your `Cities` App, you proceed with the deletion of the `Cities` App:
+- After testing your `Cities` App, you proceeded with the deletion of the `Cities` App:
    - All the containers involved in running your App were unwired automatically from log collection and application performance monitoring.
    - All the URLs, Firewall entries, and routes were also cleaned-up by TAS automatically for you.
    - All containers and service definitions were deleted, and their resources returned to the pool of resources available to TAS.
