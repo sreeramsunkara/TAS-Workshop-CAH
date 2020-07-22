@@ -86,7 +86,7 @@ Your role in the Shared-Cluster is vmware-role1
 
 - If you believe your greeting information to be wrong, please alert the workshop organizers. 
 
-- If all is well, please proceed by executing the following commands. These commands will validate that your VM has all the necessary CLIs and frameworks for this workshop.
+- If all is well, please proceed by executing the following commands. These commands will validate that your VM has all the necessary CLIs and frameworks for this workshop. Your VM may seem a bit slow in the beginning but it will speed up as you progress through the labs.
 
 ```
 cf --version
