@@ -681,7 +681,6 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 - Let's deploy an App where a service calls another service that calls a DB. 
 
-
 ![](./images/cities-pic.png)
 
 
