@@ -330,22 +330,8 @@ cd spring-petclinic
 ```
 ./mvnw -Dmaven.test.skip=true package
 ```
-```
-./mvnw spring-boot:run
-```
 
-- Once you see in your logs that `Tomcat started on port(s): 8080` you can proceed to test your `Pet Clinic` program. This is the **local** way of running your Apps.
-
-- To test, open a browser to access the following URL. Remember to use the proper FQDN that corresponds to your UserID: e.g. `user11` should use `http://user11.pks4u.com:8080`.
-
-```
-http://user1.pks4u.com:8080
-```
-- If the `Pet Clinic` App is running you have a good Spring/Java example to work with.
-
-- You can use `CRTL-C` on your Ubuntu VM to cancel out of the `spring-boot Pet Clinic` program.
-
-- Now let's `cf push` the same App to `TAS`. Please execute the following commands:
+- Now let's `cf push` your App to `TAS`. Please execute the following commands:
 
 ```
 cat manifest.yml
@@ -398,7 +384,7 @@ echo $my_task
 ![](./images/SpringAppTAS.png)
 
 **Let's recap:** 
-   - You used Maven to create a `jar` file which you executed locally on your Ubuntu Workshop VM.
+   - You used Maven to create a `jar` file of your `Petclinic` App.
    - You then used `cf push` to push your `Petclinic` App to `TAS`, and you used a browser to validate that it was working as expected.
    - You now have two Apps running on TAS: `Chess` & `Petclinic`. 
    - Your `Petclinic` App is being warmed-up by a never-ending `while (true)` loop which was executed as a `cf run-task`. We will come back to this area in a subsequent lab, when we will address App auto-scaling.
