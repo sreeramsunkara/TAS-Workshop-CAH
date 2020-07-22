@@ -35,7 +35,7 @@
   - `ssh -i fuse.pem ubuntu@user3.pks4u.com` is for `user3` 
   - `ssh -i fuse.pem ubuntu@user15.pks4u.com` is for `user15` 
 - In order to simplify the cut-&-paste-&-replace steps described above, once you are operating on your Ubuntu VM Terminal, we will define environment variables that will hold your specific login name as claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing). In this way, the cut-&-paste steps will not require you to edit the command line before pressing `return`.
-- As you work through the labs, please make every effort to not just cut-&-paste-&-execute the labs without actually asking yourself a few questions:
+- As you work through the labs, please make every **effort to not just cut-&-paste-&-execute the labs without actually asking yourself a few questions**:
    - Why am I being asked to cut-&-paste-&-execute these commands?
    - What do I think these commands will do (before actually running them)?
    - What is the role of the person who will be executing these commands in the future?
