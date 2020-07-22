@@ -401,7 +401,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
  ![](./images/lab.png)   
 
-- Your `Chess` App can have different colors: e.g. blue & green.
+- Your `Chess` App comes in different colors: blue & green.
  
 - Please keep your browser open on your `Chess` App at `http://userID-chess.apps.ourpcf.com`. You will be asked to hit the refresh button multiple times to see the seamless transition between Blue-Chess to Green-Chess.
 
