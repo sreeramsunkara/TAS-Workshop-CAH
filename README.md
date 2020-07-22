@@ -131,7 +131,7 @@ start command:   $HOME/.bp/bin/start
 
 - Back on your Workshop VM, please execute a simple `ls` command to see the file that you `git cloned` to your Workshop VM. 
 
-- _A little bit of trivia:_ you should also take a look at the contents of `index.php`:
+- _A little bit of trivia -_ you must take a look at the contents of `index.php` using the following command:
 
 ```
 cat index.php
