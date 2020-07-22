@@ -129,7 +129,7 @@ start command:   $HOME/.bp/bin/start
 
 - Open a browser window to access your URL. In the example above, the URL is `https://user1-chess.apps.ourpcf.com`. Your URL will begin with your UserID.
 
-- Execute a simple `ls` command to see the file that was `git cloned` to your Workshop VM.
+- Back on your Workshop VM, please execute a simple `ls` command to see the file that you `git cloned` to your Workshop VM. 
 
 **Let's recap:** 
 - You ssh'ed into your Workshop VM and verified the versions of certain installed CLIs (Command Line Interface) such as the cf CLI.
@@ -138,7 +138,7 @@ start command:   $HOME/.bp/bin/start
   - Your Chess App has a FQDN (fully qualified domain name)
   - Your App is secured by a valid Certificate which enables HTTPS communication
   - Your App was containerized using curated packages and deployed on the cloud in an HA environment
-  - As a developer, you did not need to worry about container filesystems and dependencies.
+  - As a developer, you did not have to worry about container filesystems and dependencies.
   - Your App code, `index.php`, had no dependencies linked to the PaaS or IaaS you are using. You are completely cloud agnostic.
   - Your App is running on a platform that is 100% up to date with the latest known [CVE](https://cve.mitre.org/) patches
   - You did not have to open any tickets with Infrastructure, Operations, Networking, Security, ... to deploy your App.
