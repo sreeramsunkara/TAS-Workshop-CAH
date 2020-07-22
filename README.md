@@ -679,7 +679,13 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
  ![](./images/lab.png)   
 
-- Let's deploy an App where a service calls another service that calls a DB. Please execute the following commands on your Workshop VM:
+- Let's deploy an App where a service calls another service that calls a DB. 
+
+
+![](./images/cities-pic.png)
+
+
+- Please execute the following commands on your Workshop VM:
 
 ```
 cd ~
