@@ -239,7 +239,7 @@ cf create-space dev -o org$my_number
 - With the next command, you will be giving every `user` in this workshop access to the `dev` space you just created. 
 
 ```
-for i in {1..22}; do cf set-space-role user$i org$my_number dev SpaceDeveloper; done
+for i in {1..20}; do cf set-space-role user$i org$my_number dev SpaceDeveloper; done
 ```
 
 - You can now ask any of your colleagues to access the `dev space` in your `org`. The same will apply to you, so use the following command to see what `orgs` are available for you to target, and then target a new `org` that is not yours to access its `dev space`. The `cf target` command below will try to target the `org` and `dev space` of your preceding colleague: e.g. if you are `user5`, he `cf target` command below will attempt to target `org4` and its `dev space`. The `cf target` command may fail if your colleague hasn't yet given you access to his/her `org` and `dev space`, so you can always come back later to see the next two commands working, or you can adjust the `-o orgID` to one that is available to you.
