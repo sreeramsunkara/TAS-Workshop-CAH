@@ -18,8 +18,6 @@
    - TAS Operators can patch and upgrade the platform without downtime.
    - TAS = Speed + Stability + Scalability + Security + Savings
 
-- Action item: reserve time on your calendar for the Sept 2 & 3, SpringOne 2020 event. It will be free and 100% on-line. [Read more](https://github.com/rm511130/SpringOne-2020/blob/master/README.md)
-
 -----------------------------------------------------
 ## Guidelines & Conventions for this Workshop 
 
