@@ -3,7 +3,7 @@
 # VMware Tanzu Application Service Workshop 
 ### (9:00AM to 12:00PM on 01-28-2021)
 
-- If you haven't yet, please go to the [prerequisites](https://github.com/rm511130/TAS-Workshop-Prerequisites#vmware-tanzu-application-service-workshop) page and execute the required steps for today's workshop.
+- If you haven't yet, please go to the [prerequisites](https://github.com/sreeramsunkara/TAS-Workshop-Prerequisites#vmware-tanzu-application-service-workshop) page and execute the required steps for today's workshop.
 
 #
 ## Introduction to Tanzu Application Service (TAS)
