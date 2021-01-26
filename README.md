@@ -103,7 +103,7 @@ dotnet --version
 cd ~
 git clone https://github.com/rm511130/chess
 cd ~/chess; rm README.md; ls
-cf login -a api.sys.ourpcf.com -u $user -p password
+cf login -a api.sys.sanleandro.cf-app.com --skip-ssl-validation -u $user -p password
 cf push $user-chess
 ```
 
