@@ -24,15 +24,15 @@
 - This self-paced workshop includes presentations, videos, demos and most of all, hands-on labs. 
 - The labs are interdependent and must be executed in order.
 - The lab environments will only be available during the ~5hrs (a limited window of time) dedicated for the joint start and self-paced completion of the workshop.
-- Please use the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) to claim a UserID for this workshop. For example, Ralph Meira is user1.
-- Update the same [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing)  as you progress through the Labs, by placing an "X" in the appropriate column.
+- Please use the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) to claim a UserID for this workshop. For example, Sreeram Sunkara is user1.
+- Update the same [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing)  as you progress through the Labs, by placing an "X" in the appropriate column.
 - Each workshop participant will be assigned a Ubuntu VM previously set up for the execution of hands-on Labs. Your Laptop or Desktop will only be used for two purposes: 
      - SSH'ing or PuTTY'ing into the Ubuntu VM 
      - Browsing web pages
 - When carrying out hands-on labs, you will be asked to cut-&-paste the commands shown `in boxes like this one` from this GitHub page to your Ubuntu VM Terminal Window. However, when issuing commands, please make sure to alter the UserID to match the one you have claimed, e.g.:
-  - `ssh -i fuse.pem ubuntu@user3.pks4u.com` is for `user3` 
-  - `ssh -i fuse.pem ubuntu@user15.pks4u.com` is for `user15` 
-- In order to simplify the cut-&-paste-&-replace steps described above, once you are operating on your Ubuntu VM Terminal, we will define environment variables that will hold your specific login name as claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing). In this way, the cut-&-paste steps will not require you to edit the command line before pressing `return`.
+  - `ssh -i cah.pem ubuntu@user3.pks4u.com` is for `user3` 
+  - `ssh -i cah.pem ubuntu@user15.pks4u.com` is for `user15` 
+- In order to simplify the cut-&-paste-&-replace steps described above, once you are operating on your Ubuntu VM Terminal, we will define environment variables that will hold your specific login name as claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing). In this way, the cut-&-paste steps will not require you to edit the command line before pressing `return`.
 - As you work through the labs, please make every **effort to not just cut-&-paste-&-execute the labs without actually asking yourself a few questions**:
    - Why am I being asked to cut-&-paste-&-execute these commands?
    - What do I think these commands will do (before actually running them)?
@@ -58,13 +58,13 @@
 ![](./images/lab.png)
 
 - Let's start by logging into the Workshop environment from your machine (Mac, PC, Laptop, Desktop, Terminal, VDI). You will need to use the following private key: 
-   - [fuse.pem](./fuse.pem) if using a Mac.
-   - [fuse.ppk](./fuse.ppk) if using a Windows PC.
+   - [cah.pem](./cah.pem) if using a Mac.
+   - [cah.ppk](./cah.ppk) if using a Windows PC.
 
-- In the pre-requisites section of this workshop, you were asked to use `ssh` or `PuTTY` to access the Ubuntu VM that has been assigned to your [UserID](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing). Please go ahead and create a Terminal Session into your VM. The example shown below applies to `user1` if he or she had downloaded the `fuse.pem` key to a Mac. If you need, the `PuTTY` instructions for Windows PC users can be found [here](./PuTTY_and_SSH.md).
+- In the pre-requisites section of this workshop, you were asked to use `ssh` or `PuTTY` to access the Ubuntu VM that has been assigned to your [UserID](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing). Please go ahead and create a Terminal Session into your VM. The example shown below applies to `user1` if he or she had downloaded the `cah.pem` key to a Mac. If you need, the `PuTTY` instructions for Windows PC users can be found [here](./PuTTY_and_SSH.md).
 
 ```
-ssh -i ~/Downloads/fuse.pem ubuntu@user1.pks4u.com 
+ssh -i ~/Downloads/cah.pem ubuntu@user1.pks4u.com 
 ```
 
 - Once logged in, you can ignore any messages that ask you to perform a `do-release-upgrade`. 
@@ -154,7 +154,7 @@ cat index.php
 
 - Congratulations, you have completed LAB-1.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
@@ -164,7 +164,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 ![](./images/lab.png)
 
 - The web-based [Apps Manager](https://docs.pivotal.io/platform/application-service/2-9/console/) application helps you manage users, organizations, spaces, and applications.
-- Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.ourpcf.com](https://apps.sys.ourpcf.com) and log-in using your UserID and `password`. Make sure to use your UserID, the one you claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing), and not `user1`.
+- Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.ourpcf.com](https://apps.sys.ourpcf.com) and log-in using your UserID and `password`. Make sure to use your UserID, the one you claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing), and not `user1`.
 
 ![](./images/apps-manager.png)
 
@@ -309,7 +309,7 @@ cf app $user-chess
 
 - Congratulations, you have completed LAB-2.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
  
 
 -----------------------------------------------------
@@ -390,7 +390,7 @@ echo $my_task
 
 - Congratulations, you have completed LAB-3.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
@@ -471,7 +471,7 @@ cf apps
 
 - Congratulations, you have completed LAB-4.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
@@ -541,7 +541,7 @@ cf terminate-task spring-petclinic $(cf tasks spring-petclinic | head -n 5 | tai
 
 - Congratulations, you have completed LAB-5.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
@@ -669,7 +669,7 @@ cf restage $user-moviefun
 
 - Congratulations, you have completed LAB-6.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
@@ -788,7 +788,7 @@ cf ds -f $user-mysql
 
 - Congratulations, you have completed LAB-7.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
@@ -823,7 +823,7 @@ curl $user-fact.apps.ourpcf.com/1000; echo
 
 - Congratulations, you have completed LAB-8.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 -----------------------------------------------------
 ## LAB-9: cf local
@@ -887,7 +887,7 @@ fg
 
 - Congratulations, you have completed LAB-9.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 -----------------------------------------------------
 ## LAB-10: .Net Core
@@ -928,7 +928,7 @@ cf push $user-dotnet -b dotnet_core_buildpack -m 100M
 
 - Congratulations, you have completed LAB-10 and finished the Workshop.
 
-Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1pV7kOcfzq_bHbXP0pa79NtPMpY3zVHSAZ8HpHaHyrKI/edit?usp=sharing) with an "X" in the appropriate column.
+Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing) with an "X" in the appropriate column.
 
 
 -----------------------------------------------------
