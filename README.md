@@ -30,8 +30,8 @@
      - SSH'ing or PuTTY'ing into the Ubuntu VM 
      - Browsing web pages
 - When carrying out hands-on labs, you will be asked to cut-&-paste the commands shown `in boxes like this one` from this GitHub page to your Ubuntu VM Terminal Window. However, when issuing commands, please make sure to alter the UserID to match the one you have claimed, e.g.:
-  - `ssh -i cah.pem ubuntu@user3.pks4u.com` is for `user3` 
-  - `ssh -i cah.pem ubuntu@user15.pks4u.com` is for `user15` 
+  - `ssh -i cah.pem ubuntu@user3.tanzu4u.net` is for `user3` 
+  - `ssh -i cah.pem ubuntu@user15.tanzu4u.net` is for `user15` 
 - In order to simplify the cut-&-paste-&-replace steps described above, once you are operating on your Ubuntu VM Terminal, we will define environment variables that will hold your specific login name as claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing). In this way, the cut-&-paste steps will not require you to edit the command line before pressing `return`.
 - As you work through the labs, please make every **effort to not just cut-&-paste-&-execute the labs without actually asking yourself a few questions**:
    - Why am I being asked to cut-&-paste-&-execute these commands?
@@ -64,7 +64,7 @@
 - In the pre-requisites section of this workshop, you were asked to use `ssh` or `PuTTY` to access the Ubuntu VM that has been assigned to your [UserID](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing). Please go ahead and create a Terminal Session into your VM. The example shown below applies to `user1` if he or she had downloaded the `cah.pem` key to a Mac. If you need, the `PuTTY` instructions for Windows PC users can be found [here](./PuTTY_and_SSH.md).
 
 ```
-ssh -i ~/Downloads/cah.pem ubuntu@user1.pks4u.com 
+ssh -i ~/Downloads/cah.pem ubuntu@user1.tanzu4u.net 
 ```
 
 - Once logged in, you can ignore any messages that ask you to perform a `do-release-upgrade`. 
