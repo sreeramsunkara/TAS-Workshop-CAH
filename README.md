@@ -709,6 +709,7 @@ cf push
 ```
 cd ~/cities/cities-service
 envsubst < manifest.yml_proto > manifest.yml
+sed -i 's/ourpcf.com/sanleandro.cf-app.com/g' manifest.yml
 cat manifest.yml
 cf push 
 ```
