@@ -163,7 +163,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 ![](./images/lab.png)
 
-- The web-based [Apps Manager](https://docs.pivotal.io/platform/application-service/2-9/console/) application helps you manage users, organizations, spaces, and applications.
+- The web-based [Apps Manager](https://docs.pivotal.io/platform/application-service/2-10/console/) application helps you manage users, organizations, spaces, and applications.
 - Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.sanleandro.cf-app.com](https://apps.sys.sanleandro.cf-app.com) and log-in using your UserID and `password`. Make sure to use your UserID, the one you claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing), and not `user1`.
 
 ![](./images/apps-manager.png)
@@ -190,7 +190,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 5. `Tools` is an easy way to get the `cf` CLI to get started.
 
-6. `Docs` take you to [https://docs.pivotal.io/platform/application-service/2-9/overview/intro.html](https://docs.pivotal.io/platform/application-service/2-9/overview/intro.html)
+6. `Docs` take you to [https://docs.pivotal.io/platform/application-service/2-10/overview/intro.html](https://docs.pivotal.io/platform/application-service/2-10/overview/intro.html)
 
 7. `Marketplace` is where you will find services such as  databases, key-value stores, message queuing solutions, and much more.
 
