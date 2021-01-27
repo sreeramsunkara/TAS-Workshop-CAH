@@ -3,7 +3,7 @@
 # VMware Tanzu Application Service Workshop 
 ### (9:00AM to 12:00PM on 01-28-2021)
 
-- If you haven't yet, please go to the [prerequisites](https://github.com/sreeramsunkara/TAS-Workshop-Prerequisites#vmware-tanzu-application-service-workshop) page and execute the required steps for today's workshop.
+- If you haven't yet, please go to the [prerequisites](https://github.com/sreeramsunkara/TAS-Workshop-CAH-Prerequisites#vmware-tanzu-application-service-workshop) page and execute the required steps for today's workshop.
 
 #
 ## Introduction to Tanzu Application Service (TAS)
@@ -58,8 +58,8 @@
 ![](./images/lab.png)
 
 - Let's start by logging into the Workshop environment from your machine (Mac, PC, Laptop, Desktop, Terminal, VDI). You will need to use the following private key: 
-   - [cah.pem](https://raw.githubusercontent.com/sreeramsunkara/TAS-Workshop-Prerequisites/master/cah.pem) if using a Mac.
-   - [cah.ppk](https://raw.githubusercontent.com/sreeramsunkara/TAS-Workshop-Prerequisites/master/cah.ppk) if using a Windows PC.
+   - [cah.pem](https://raw.githubusercontent.com/sreeramsunkara/TAS-Workshop-CAH-Prerequisites/master/cah.pem) if using a Mac.
+   - [cah.ppk](https://raw.githubusercontent.com/sreeramsunkara/TAS-Workshop-CAH-Prerequisites/master/cah.ppk) if using a Windows PC.
 
 - In the pre-requisites section of this workshop, you were asked to use `ssh` or `PuTTY` to access the Ubuntu VM that has been assigned to your [UserID](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing). Please go ahead and create a Terminal Session into your VM. The example shown below applies to `user1` if he or she had downloaded the `cah.pem` key to a Mac. If you need, the `PuTTY` instructions for Windows PC users can be found [here](./PuTTY_and_SSH.md).
 
