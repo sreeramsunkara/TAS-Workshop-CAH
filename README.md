@@ -943,7 +943,8 @@ During the course of this Workshop you deployed multiple applications and servic
 You also didn't open any support tickets to request access to services such as MySQL or to bind services to applications.
 
 Congratulations !! If you have a few extra minutes, we would like to hear from you. How was the workshop experience? 
-Please send your comments and questions to RMeira@VMware.com
+Please send your comments and questions to sunkarasr@VMware.com.
+Thanks to Ralph Meira(rmeira@vmware.com) for creating the content and labs. 
 
 Thank you!!
 
