@@ -125,7 +125,7 @@ start command:   $HOME/.bp/bin/start
 #0   running   2020-07-17T19:58:39Z   0.7%   27.2M of 512M   246.4M of 1G
 ```
 
-- Open a browser window to access your URL. In the example above, the URL is `https://user1-chess.apps.sanleandro.cf-app.com`. Your URL will begin with your UserID.
+- Open a browser window to access your URL. In the example above, the URL is `https://user1-chess.apps.salinas.cf-app.com`. Your URL will begin with your UserID.
 
 - Back on your Workshop VM, please execute a simple `ls` command to see the file that you `git cloned` to your Workshop VM. 
 
