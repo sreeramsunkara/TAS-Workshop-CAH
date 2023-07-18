@@ -915,7 +915,9 @@ source ./tweaking_Index.cshtml_and_Program.cs.sh
 - Now let's `cf push` using the following command:
 
 ```
-cf push $user-dotnet -b dotnet_core_2_3_11 -m 100M
+sed -i "s/netcoreapp3.1/net6.0/g" dotnet.csproj
+sed -i "s/3.1.201/6.0.408/g" global.json
+cf push $user-dotnet -b dotnet_core_buildpack -m 100M
 ```
 
 - Once the `cf push` has completed, please open a browser to test your .NET Core Welcome App. The URL will be `http://userID-dotnet.apps.salinas.cf-app.com` where `UserID` is your UserID.
