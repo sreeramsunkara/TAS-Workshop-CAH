@@ -164,7 +164,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 ![](./images/lab.png)
 
 - The web-based [Apps Manager](https://docs.pivotal.io/platform/application-service/2-10/console/) application helps you manage users, organizations, spaces, and applications.
-- Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.sanleandro.cf-app.com](https://apps.sys.sanleandro.cf-app.com) and log-in using your UserID and `password`. Make sure to use your UserID, the one you claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing), and not `user1`.
+- Let's log into Apps Manager and take a look around. Please open a browser at [https://apps.sys.salinas.cf-app.com](https://apps.sys.salinas.cf-app.com) and log-in using your UserID and `password`. Make sure to use your UserID, the one you claimed in the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d/1IRY5QVNfI5fkrqmpbwCagM5kffEysAnsXoYI68mdlKo/edit?usp=sharing), and not `user1`.
 
 ![](./images/apps-manager.png)
 
@@ -222,7 +222,7 @@ cf scale $user-chess -m 100M -i 3
 
 - Note: the command above will require the restart of your `Chess` App because we are literally reconfiguring the containers that are running your App. Later on, during Lab-4, we will see a technique for making such a change without any Application downtime.
 
-- You can view the changes implemented by the command you just executed in [Apps Manager](https://apps.sys.sanleandro.cf-app.com), or you can also use the `cf` CLI as follows:
+- You can view the changes implemented by the command you just executed in [Apps Manager](https://apps.sys.salinas.cf-app.com), or you can also use the `cf` CLI as follows:
 
 ```
 cf events $user-chess
@@ -336,12 +336,12 @@ cat manifest.yml
 cf push
 ```
 
-- Once the `cf  push` has finished executing, you should be able to access your `Petclinic` App using the URL shown in the output logs. In the example shown below, the URL for the `Petclinic` App can be seen on the 3rd line, next to the word `routes:`. It's `https://spring-petclinic-happy-crane-ie.apps.sanleandro.cf-app.com`, a uniquely generated URL, because the `manifest.yml` file contained the following line: `random-route: true`. 
+- Once the `cf  push` has finished executing, you should be able to access your `Petclinic` App using the URL shown in the output logs. In the example shown below, the URL for the `Petclinic` App can be seen on the 3rd line, next to the word `routes:`. It's `https://spring-petclinic-happy-crane-ie.apps.salinas.cf-app.com`, a uniquely generated URL, because the `manifest.yml` file contained the following line: `random-route: true`. 
 
 ```
 name:              spring-petclinic
 requested state:   started
-routes:            sspring-petclinic-happy-crane-ie.apps.sanleandro.cf-app.com
+routes:            sspring-petclinic-happy-crane-ie.apps.salinas.cf-app.com
 last uploaded:     Sun 19 Jul 23:04:53 UTC 2020
 stack:             cflinuxfs3
 buildpacks:        client-certificate-mapper=1.11.0_RELEASE container-security-provider=1.16.0_RELEASE
@@ -377,7 +377,7 @@ echo $my_task
 
 - The `Linux Shell` commands shown above assemble a simple one-line command to execute a `cf run-task`. The `task` performs `curl` commands against the URL of your `Petclinic` App. The actual one-line command is contained in the `$my_task` variable which was `echo'ed` out for you to see.
 
--  Now let's take a look at [Apps Manager](https://apps.sys.sanleandro.cf-app.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](https://apps.sys.sanleandro.cf-app.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
+-  Now let's take a look at [Apps Manager](https://apps.sys.salinas.cf-app.com/). Please click on the various links shown in the following image. To get to your `Petclinic` App, you will need to navigate [`Apps Manager`](https://apps.sys.salinas.cf-app.com/), going from your `Org`, to your `Workshop Space`, and to your `App`.
 
 ![](./images/SpringAppTAS.png)
 
@@ -401,7 +401,7 @@ Please update the [Workshop Google Sheet](https://docs.google.com/spreadsheets/d
 
 - Your `Chess` App comes in different colors: blue & green.
  
-- Please keep your browser open on your `Chess` App at `http://userID-chess.apps.sanleandro.cf-app.com`. You will be asked to hit the refresh button multiple times to see the seamless transition between Blue-Chess to Green-Chess.
+- Please keep your browser open on your `Chess` App at `http://userID-chess.apps.salinas.cf-app.com`. You will be asked to hit the refresh button multiple times to see the seamless transition between Blue-Chess to Green-Chess.
 
 - Let's get started by making some changes to your `Chess` App. Please execute the following commands to change your `Chess` from blue to green:
 
@@ -437,7 +437,7 @@ cf env $user-chess
 ```
 cd ~/chess
 cf push $user-chess-v2 -m 99M -i 3 -b php_buildpack
-cf map-route $user-chess-v2 apps.sanleandro.cf-app.com --hostname $user-chess
+cf map-route $user-chess-v2 apps.salinas.cf-app.com --hostname $user-chess
 cf stop $user-chess
 ```
 
@@ -445,7 +445,7 @@ cf stop $user-chess
 
 ```
 cf apps
-cf unmap-route $user-chess-v2 apps.sanleandro.cf-app.com --hostname $user-chess-v2
+cf unmap-route $user-chess-v2 apps.salinas.cf-app.com --hostname $user-chess-v2
 cf apps
 ```
 - We can complete the switch by deleting the old version of the `Chess` App. Please execute the following commands:
@@ -458,7 +458,7 @@ cf apps
 - The `cf map-route` command enables the dark launching of new features and their eventual introduction into the mainstream application. You can also have many routes mapped to the same App. For example, please execute the following commands:
 
 ```
-cf map-route spring-petclinic apps.sanleandro.cf-app.com --hostname $user-pets
+cf map-route spring-petclinic apps.salinas.cf-app.com --hostname $user-pets
 cf apps
 ```
 
@@ -486,7 +486,7 @@ cd ~
 git clone https://github.com/rm511130/curly
 cd curly
 export replace_me="chess.cfapps.io"
-export replace_by=$user-pets.apps.sanleandro.cf-app.com
+export replace_by=$user-pets.apps.salinas.cf-app.com
 sed -i "s|$replace_me|$replace_by|g" cf_push_example_binary_buildpack.sh 
 chmod +x cf_push_example_binary_buildpack.sh 
 ./cf_push_example_binary_buildpack.sh 
@@ -700,7 +700,7 @@ cat manifest.yml
 cf push
 ```
 
-- Once the `cf push` has completed, we can test our code by opening a browser at `http://userID-cities-hello.apps.sanleandro.cf-app.com` where `userID` maps to the UserID you have been using throughout this workshop. 
+- Once the `cf push` has completed, we can test our code by opening a browser at `http://userID-cities-hello.apps.salinas.cf-app.com` where `userID` maps to the UserID you have been using throughout this workshop. 
 
 ![](./images/Welcome-Lab7.png)
 
@@ -709,7 +709,7 @@ cf push
 ```
 cd ~/cities/cities-service
 envsubst < manifest.yml_proto > manifest.yml
-sed -i 's/ourpcf.com/sanleandro.cf-app.com/g' manifest.yml
+sed -i 's/ourpcf.com/salinas.cf-app.com/g' manifest.yml
 cat manifest.yml
 cf push 
 ```
@@ -734,7 +734,7 @@ curl $CitiesServiceUrl/cities/62
   "longitude" : "-096.578819",
   "_links" : {
     "self" : {
-      "href" : "http://cities-service.apps.sanleandro.cf-app.com/cities/62"
+      "href" : "http://cities-service.apps.salinas.cf-app.com/cities/62"
     }
   }
 }
@@ -751,12 +751,12 @@ cf services
 ```
 cd ~/cities/cities-ui
 envsubst < manifest.yml_proto > manifest.yml
-sed -i 's/ourpcf.com/sanleandro.cf-app.com/g' manifest.yml
+sed -i 's/ourpcf.com/salinas.cf-app.com/g' manifest.yml
 cat manifest.yml
 cf push
 ```
 
-- Once the `cf push` has completed, we test the complete application by using a browser opened at: `http://userID-cities-ui.apps.sanleandro.cf-app.com where `userID` is the UserID you have been using throughout this workshop.
+- Once the `cf push` has completed, we test the complete application by using a browser opened at: `http://userID-cities-ui.apps.salinas.cf-app.com where `userID` is the UserID you have been using throughout this workshop.
 
 ![](./images/cities-app.png)
 
@@ -815,7 +815,7 @@ cd ~
 mkdir -p fact
 cd ~/fact
 cf push $user-fact --docker-image rmeira/fact -m 100M
-curl $user-fact.apps.sanleandro.cf-app.com/1000; echo
+curl $user-fact.apps.salinas.cf-app.com/1000; echo
 ```
 
 **Let's recap:** 
@@ -918,7 +918,7 @@ source ./tweaking_Index.cshtml_and_Program.cs.sh
 cf push $user-dotnet -b dotnet_core_2_3_11 -m 100M
 ```
 
-- Once the `cf push` has completed, please open a browser to test your .NET Core Welcome App. The URL will be `http://userID-dotnet.apps.sanleandro.cf-app.com` where `UserID` is your UserID.
+- Once the `cf push` has completed, please open a browser to test your .NET Core Welcome App. The URL will be `http://userID-dotnet.apps.salinas.cf-app.com` where `UserID` is your UserID.
 
 **Let's recap:** 
 - TAS supports multiple languages:
