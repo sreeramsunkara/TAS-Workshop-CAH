@@ -578,7 +578,7 @@ mvn clean package -DskipTests -Dmaven.test.skip=true
 - Now let's run our `MovieFun` App on TAS. Please execute the following command:
 
 ```
-cf push $user-moviefun
+cf push $user-moviefun -s cflinuxfs3
 ```
 
 - The `MovieFun` App requires the use of the [TomEE Buildpack](https://github.com/cloudfoundry-community/tomee-buildpack) because it is an older JVM based application. The TomEE Buildpack is designed to run many JVM-based applications (Grails, Groovy, Java Main, Play Framework, Spring Boot, and Java EE Web Profile) with no additional configuration. It supports configuration of the standard components, and extension to add custom components. This specific buildpack has been customized to use the Tomcat Web Server.  
