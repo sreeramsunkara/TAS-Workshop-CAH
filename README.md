@@ -103,7 +103,7 @@ dotnet --version
 cd ~
 git clone https://github.com/rm511130/chess
 cd ~/chess; rm README.md; ls
-cf login -a api.sys.sanleandro.cf-app.com --skip-ssl-validation -u $user -p password
+cf login -a api.sys.salinas.cf-app.com --skip-ssl-validation -u $user -p password
 cf push $user-chess
 ```
 
@@ -112,7 +112,7 @@ cf push $user-chess
 ```
 name:              user1-chess
 requested state:   started
-routes:            user1-chess.apps.sanleandro.cf-app.com              <------ Use this URL to access your App
+routes:            user1-chess.apps.salinas.cf-app.com              <------ Use this URL to access your App
 last uploaded:     Fri 17 Jul 15:58:21 EDT 2020
 stack:             cflinuxfs3
 buildpacks:        php_buildpack
