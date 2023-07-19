@@ -1,7 +1,7 @@
 ![](./images/vmware-logo.png)
 
 # VMware Tanzu Application Service Workshop 
-### (9:00AM to 12:00PM on 01-28-2021)
+### (1:00PM to 4:00PM on 07-20-2023)
 
 - If you haven't yet, please go to the [prerequisites](https://github.com/sreeramsunkara/TAS-Workshop-CAH-Prerequisites#vmware-tanzu-application-service-workshop) page and execute the required steps for today's workshop.
 
